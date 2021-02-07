@@ -1,2 +1,2 @@
-musify: main.cpp
-		g++ -o musify -Wall -pedantic main.cpp
+musify: src/main.cpp
+		g++ -o musify -Wall -pedantic src/main.cpp src/song.cpp src/linkedList.cpp
