@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Musify: Código-Fonte de src/linkedList.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Musify
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Busca','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Busca');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">linkedList.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LINKEDLIST_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LINKEDLIST_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;song.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="structnode.html">    7</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structnode.html">node</a> {</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structnode.html#a834f9cdb320a38f34a0e981c8617b5ce">    8</a></span>&#160;  <a class="code" href="class_song.html">Song</a> <a class="code" href="structnode.html#a834f9cdb320a38f34a0e981c8617b5ce">data</a>; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="structnode.html#aad210fa7c160a49f6b9a3ffee592a2bc">    9</a></span>&#160;  <a class="code" href="structnode.html">node</a>* <a class="code" href="structnode.html#aad210fa7c160a49f6b9a3ffee592a2bc">next</a>; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;};</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_linked_list.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_linked_list.html">LinkedList</a> {</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="structnode.html">node</a>* head; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="structnode.html">node</a>* tail; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_linked_list.html#afe7f78983e173f8018927cf2ad11a5aa">LinkedList</a>(); </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_linked_list.html#a35811ed58ff0d8d9cc9b309b8d8f5111">~LinkedList</a>(); </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#a00e7c38b3eeca04ab26b2abb6fe2924f">createNode</a>(<a class="code" href="class_song.html">Song</a> value); </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_linked_list.html#af02eaa3695918e657f639996eae613c5">display</a>(); </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclass_linked_list_html"><div class="ttname"><a href="class_linked_list.html">LinkedList</a></div><div class="ttdoc">Classe que representa uma lista ligada.</div><div class="ttdef"><b>Definition:</b> linkedList.h:13</div></div>
+<div class="ttc" id="aclass_linked_list_html_a00e7c38b3eeca04ab26b2abb6fe2924f"><div class="ttname"><a href="class_linked_list.html#a00e7c38b3eeca04ab26b2abb6fe2924f">LinkedList::createNode</a></div><div class="ttdeci">void createNode(Song value)</div><div class="ttdoc">Cria um novo nó</div><div class="ttdef"><b>Definition:</b> linkedList.cpp:20</div></div>
+<div class="ttc" id="aclass_linked_list_html_a35811ed58ff0d8d9cc9b309b8d8f5111"><div class="ttname"><a href="class_linked_list.html#a35811ed58ff0d8d9cc9b309b8d8f5111">LinkedList::~LinkedList</a></div><div class="ttdeci">~LinkedList()</div><div class="ttdoc">Destrutor da lista ligada.</div><div class="ttdef"><b>Definition:</b> linkedList.cpp:13</div></div>
+<div class="ttc" id="aclass_linked_list_html_af02eaa3695918e657f639996eae613c5"><div class="ttname"><a href="class_linked_list.html#af02eaa3695918e657f639996eae613c5">LinkedList::display</a></div><div class="ttdeci">void display()</div><div class="ttdoc">Exibe o conteúdo dos nós da lista.</div><div class="ttdef"><b>Definition:</b> linkedList.cpp:35</div></div>
+<div class="ttc" id="aclass_linked_list_html_afe7f78983e173f8018927cf2ad11a5aa"><div class="ttname"><a href="class_linked_list.html#afe7f78983e173f8018927cf2ad11a5aa">LinkedList::LinkedList</a></div><div class="ttdeci">LinkedList()</div><div class="ttdoc">Construtor da lista ligada.</div><div class="ttdef"><b>Definition:</b> linkedList.cpp:8</div></div>
+<div class="ttc" id="aclass_song_html"><div class="ttname"><a href="class_song.html">Song</a></div><div class="ttdoc">Classe que representa uma música do sistema.</div><div class="ttdef"><b>Definition:</b> song.h:9</div></div>
+<div class="ttc" id="astructnode_html"><div class="ttname"><a href="structnode.html">node</a></div><div class="ttdoc">Struct que representa um nó da lista ligada e armazena objetos do tipo música.</div><div class="ttdef"><b>Definition:</b> linkedList.h:7</div></div>
+<div class="ttc" id="astructnode_html_a834f9cdb320a38f34a0e981c8617b5ce"><div class="ttname"><a href="structnode.html#a834f9cdb320a38f34a0e981c8617b5ce">node::data</a></div><div class="ttdeci">Song data</div><div class="ttdoc">Armazena um objeto do tipo música.</div><div class="ttdef"><b>Definition:</b> linkedList.h:8</div></div>
+<div class="ttc" id="astructnode_html_aad210fa7c160a49f6b9a3ffee592a2bc"><div class="ttname"><a href="structnode.html#aad210fa7c160a49f6b9a3ffee592a2bc">node::next</a></div><div class="ttdeci">node * next</div><div class="ttdoc">Ponteiro para o próximo nó</div><div class="ttdef"><b>Definition:</b> linkedList.h:9</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
