@@ -32,6 +32,9 @@ void LinkedList::createNode(Song value) {
   }
 }
 
+/**
+ * Exibe as músicas armazenadas na lista ligada
+ */
 void LinkedList::display() {
   node* temp = new node;
   temp = head;
@@ -41,5 +44,4 @@ void LinkedList::display() {
     cout << s.getTitle() << " - " << s.getArtist() << endl;
     temp = temp->next;
   }
-  
 }
