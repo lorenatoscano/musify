@@ -22,8 +22,8 @@ int main(int argc, char const *argv[])
   s3->setTitle("Musica 3");
   s3->setArtist("Artista 3");
   
-  queue->insertEnd(*s1);
-  queue->insertStart(*s2);
+  queue->insertPosition(2, *s1);
+  queue->insertPosition(1, *s2);
   queue->insertPosition(2, *s3);
 
   queue->display();

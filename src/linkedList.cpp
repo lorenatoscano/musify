@@ -6,8 +6,8 @@ using namespace std;
 
 /** Inicializa head e tail com valores nulos e o tamanho com 0 */
 LinkedList::LinkedList() {
-  head = NULL;
-  tail = NULL;
+  head = nullptr;
+  tail = nullptr;
   size = 0;
 }
 
@@ -19,15 +19,15 @@ LinkedList::~LinkedList() {
  * @param value objeto do tipo Song.
  */
 void LinkedList::createNode(Song value) {
-  node* temp = nullptr;
+  node* temp = new node;
 
   temp->data = value;
-  temp->next = NULL;
+  temp->next = nullptr;
 
-  if (head == NULL) {
+  if (head == nullptr) {
     head =  temp;
     tail = temp;
-    temp = NULL;
+    temp = nullptr;
   } else {
     tail->next = temp;
     tail = temp;
@@ -56,12 +56,12 @@ void LinkedList::insertEnd(Song value) {
   node* temp = new node;
 
   temp->data = value;
-  temp->next = NULL;
+  temp->next = nullptr;
 
-  if (head == NULL) {
+  if (head == nullptr) {
     head =  temp;
     tail = temp;
-    temp = NULL;
+    temp = nullptr;
   } else {
     tail->next = temp;
     tail = temp;
@@ -76,13 +76,14 @@ void LinkedList::insertEnd(Song value) {
  * @param value objeto do tipo Song.
  */
 void LinkedList::insertPosition(size_t pos, Song value) {
-  node* pre = new node;
-  node* cur = new node;
-  node* temp = new node;
+  node* pre = nullptr;
+  node* cur = nullptr;
 
   if (pos == 1) {
     insertStart(value);
   } else if (pos <= size) {
+    node* temp = new node;
+    
     cur = head;
   
     for (size_t i = 1; i < pos; ++i) {
@@ -98,10 +99,6 @@ void LinkedList::insertPosition(size_t pos, Song value) {
   } else {
     insertEnd(value);
   }
-
-  // delete(pre);
-  // delete(cur);
-  // delete(temp);
 }
 
 
@@ -112,7 +109,7 @@ void LinkedList::display() {
   node* temp = new node;
   temp = head;
 
-  while (temp != NULL) {
+  while (temp != nullptr) {
     Song s = temp->data;
     cout << s.getTitle() << " - " << s.getArtist() << endl;
     temp = temp->next;
