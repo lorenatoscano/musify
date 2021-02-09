@@ -142,15 +142,25 @@ void LinkedList::removePosition(size_t pos) {
   }
 }
 
+/**
+ * Percorre a lista procurando o nó que contenha os mesmos valores da música passada por parâmetro. Desconsidera maíusculas.
+ * @param searchSong música a ser buscada
+ * @return o ponteiro para o nó, caso a busca tenha sucesso, ou nullptr caso contrário.
+ */
 node* LinkedList::search(Song searchSong) {
   node* temp = head;
 
   while (temp != nullptr) {
     Song s = temp->data;
-    if (s.getTitle() == searchSong.getTitle() && s.getArtist() == searchSong.getArtist()) {
+
+    // Compara os títulos e artistas desconsiderando maiúsculas
+    if ( toLowercase(s.getTitle()) == toLowercase(searchSong.getTitle()) && 
+        toLowercase(s.getArtist()) == toLowercase(searchSong.getArtist()) ) {
       cout << "Encontrei!" << endl;
-      return temp;
+      // Retorna o ponteiro para o nó correspondente
+      return temp; 
     }
+
     temp = temp->next;
   }
 

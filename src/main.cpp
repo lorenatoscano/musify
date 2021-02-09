@@ -40,10 +40,6 @@ int main(int argc, char const *argv[])
   node* result = queue->search(searchSong);
   cout << result << endl;
 
-  string antes = "LoREnA";
-  string depois = toLowercase(antes);
-  cout << antes << " - " << depois << endl;
-
   delete s1;
   delete s2;
   delete s3;
