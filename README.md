@@ -28,6 +28,9 @@ $ .\musify.exe
 ## Exemplos
 
 ...
+
+## Limitações
+- Os nomes das músicas devem ser únicos. O sistema não suporta casos de mais de uma música com mesmo nome, ainda que sejam de artistas diferentes.
 ## Licença e Autora
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/lorenatoscano/musify/blob/main/LICENSE) para mais detalhes.
 

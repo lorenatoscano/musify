@@ -2,6 +2,7 @@
 
 #include "song.h"
 #include "linkedList.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -33,9 +34,20 @@ int main(int argc, char const *argv[])
   cout << endl;
   queue->display();
 
+  Song searchSong;
+  searchSong.setArtist("Dua Lipa");
+  searchSong.setTitle("NeW Rules");
+  node* result = queue->search(searchSong);
+  cout << result << endl;
+
+  string antes = "LoREnA";
+  string depois = toLowercase(antes);
+  cout << antes << " - " << depois << endl;
+
   delete s1;
   delete s2;
   delete s3;
+
   delete queue;
 
   return 0;

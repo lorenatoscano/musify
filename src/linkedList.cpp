@@ -1,8 +1,7 @@
 #include <iostream>
 #include "linkedList.h"
 #include "song.h"
-
-using namespace std;
+#include "utils.h"
 
 /** Inicializa head e tail com valores nulos e o tamanho com 0 */
 LinkedList::LinkedList() {
@@ -141,6 +140,22 @@ void LinkedList::removePosition(size_t pos) {
   } else {
     removeLast();
   }
+}
+
+node* LinkedList::search(Song searchSong) {
+  node* temp = head;
+
+  while (temp != nullptr) {
+    Song s = temp->data;
+    if (s.getTitle() == searchSong.getTitle() && s.getArtist() == searchSong.getArtist()) {
+      cout << "Encontrei!" << endl;
+      return temp;
+    }
+    temp = temp->next;
+  }
+
+  cout << "Nao encontrei" << endl;
+  return nullptr;
 }
 
 /**
