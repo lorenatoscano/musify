@@ -52,7 +52,6 @@ void LinkedList::insertEnd(Song value) {
 
 /**
  * Cria e insere numa posição escolhida um nó que armazena a música passada por argumento.
- * 
  * Faz o tratamento caso a posição escolhida seja a primeira ou maior que a última.
  * @param pos índice da posição escolhida (a partir de 1)
  * @param value objeto do tipo Song.
@@ -118,7 +117,6 @@ void LinkedList::removeLast() {
 
 /**
  * Deleta o nó da posição escolhida e recria o link entre seu antecessor e sucessor.
- * 
  * Faz o tratamento caso a posição escolhida seja a primeira ou maior que a última.
  * @param pos índice da posição escolhida (a partir de 1)
  */
