@@ -19,11 +19,13 @@ class LinkedList {
     LinkedList(); /**< Construtor da lista ligada */
     ~LinkedList(); /**< Destrutor da lista ligada */
 
-    void createNode(Song value); /**< Cria um novo nó */
-
     void insertStart(Song value); /**< Insere um nó no início */
     void insertEnd(Song value); /**< Insere um nó no fim */
     void insertPosition(size_t pos, Song value); /**< Insere um nó numa posição específica */
+    
+    void removeFirst(); /**< Remove o primeiro nó */
+    void removeLast(); /**< Remove o último nó */
+    void removePosition(size_t pos); /**< Remove o nó de uma posição específica */
 
     void display(); /**< Exibe o conteúdo dos nós da lista */
 };

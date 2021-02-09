@@ -28,6 +28,11 @@ int main(int argc, char const *argv[])
 
   queue->display();
 
+  queue->removePosition(2);
+
+  cout << endl;
+  queue->display();
+
   delete s1;
   delete s2;
   delete s3;

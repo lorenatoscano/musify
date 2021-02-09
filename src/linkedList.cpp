@@ -15,26 +15,6 @@ LinkedList::~LinkedList() {
 }
 
 /**
- * Cria um nó que armazena a música passada por argumento
- * @param value objeto do tipo Song.
- */
-void LinkedList::createNode(Song value) {
-  node* temp = new node;
-
-  temp->data = value;
-  temp->next = nullptr;
-
-  if (head == nullptr) {
-    head =  temp;
-    tail = temp;
-    temp = nullptr;
-  } else {
-    tail->next = temp;
-    tail = temp;
-  }
-}
-
-/**
  * Cria e insere no início da lista um nó que armazena a música passada por argumento
  * @param value objeto do tipo Song.
  */
@@ -71,7 +51,9 @@ void LinkedList::insertEnd(Song value) {
 }
 
 /**
- * Cria e insere numa posição escolhida um nó que armazena a música passada por argumento
+ * Cria e insere numa posição escolhida um nó que armazena a música passada por argumento.
+ * 
+ * Faz o tratamento caso a posição escolhida seja a primeira ou maior que a última.
  * @param pos índice da posição escolhida (a partir de 1)
  * @param value objeto do tipo Song.
  */
@@ -101,13 +83,73 @@ void LinkedList::insertPosition(size_t pos, Song value) {
   }
 }
 
+/**
+ * Declara o segundo elemento da lista como head e deleta o primeiro
+ */
+void LinkedList::removeFirst() {
+  node* temp = head;
+
+  head = head->next;
+
+  --size;
+  delete temp;
+}
+
+/**
+ * Declara o penúltimo elemento da lista como tail e deleta o ultimo
+ */
+void LinkedList::removeLast() {
+  node* pre = nullptr;
+  node* cur = nullptr;
+
+  cur = head;
+
+  while (cur->next != nullptr) {
+    pre = cur;
+    cur = cur->next;
+  }
+
+  tail = pre;
+  pre->next = nullptr;
+
+  --size;
+  delete cur;
+}
+
+/**
+ * Deleta o nó da posição escolhida e recria o link entre seu antecessor e sucessor.
+ * 
+ * Faz o tratamento caso a posição escolhida seja a primeira ou maior que a última.
+ * @param pos índice da posição escolhida (a partir de 1)
+ */
+void LinkedList::removePosition(size_t pos) {
+  node* pre = nullptr;
+  node* cur = nullptr;
+
+  if (pos == 1) {
+    removeFirst();
+  } else if (pos <= size) {
+    cur = head;
+
+    for (size_t i = 1; i < pos; ++i) {
+      pre = cur;
+      cur = cur->next;
+    }
+    
+    pre->next = cur->next;
+
+    --size;
+    delete cur;
+  } else {
+    removeLast();
+  }
+}
 
 /**
  * Exibe as músicas armazenadas na lista ligada
  */
 void LinkedList::display() {
-  node* temp = new node;
-  temp = head;
+  node* temp = head;
 
   while (temp != nullptr) {
     Song s = temp->data;
