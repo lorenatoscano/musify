@@ -10,7 +10,21 @@ LinkedList::LinkedList() {
   size = 0;
 }
 
+/** Desaloca os nós da lista caso ainda existam na memória */
 LinkedList::~LinkedList() {
+  if (size != 0) {
+    node* temp = nullptr;
+    node* cur = nullptr;
+
+    cur = head;
+
+    while (cur != nullptr) {
+      temp = cur->next;
+      delete cur;
+      cur = temp;
+    }
+    
+  }
 }
 
 /**
