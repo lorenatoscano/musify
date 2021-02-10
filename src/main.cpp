@@ -20,8 +20,8 @@ int main(int argc, char const *argv[])
   s2->setTitle("Paradise");
   s2->setArtist("Coldplay");
 
-  s3->setTitle("Musica 3");
-  s3->setArtist("Artista 3");
+  s3->setTitle("NeW rUlEs");
+  s3->setArtist("dua lipa");
   
   queue->insertPosition(2, *s1);
   queue->insertPosition(1, *s2);
@@ -34,11 +34,11 @@ int main(int argc, char const *argv[])
   cout << endl;
   queue->display();
 
-  Song searchSong;
-  searchSong.setArtist("Dua Lipa");
-  searchSong.setTitle("NeW Rules");
-  node* result = queue->search(searchSong);
-  cout << result << endl;
+  // Song searchSong;
+  // searchSong.setArtist("Dua Lipa");
+  // searchSong.setTitle("NeW Rules");
+  // node* result = queue->search(searchSong);
+  // cout << result << endl;
 
   delete s1;
   delete s2;

@@ -32,13 +32,18 @@ LinkedList::~LinkedList() {
  * @param value objeto do tipo Song.
  */
 void LinkedList::insertStart(Song value) {
-  node* temp = new node;
+  // Evita a adição de músicas repetidas
+  if (search(value) != nullptr) {
+    cout << "A música já existe no sistema." << endl;
+  } else {
+    node* temp = new node;
 
-  temp->data = value;
-  temp->next = head;
-  head = temp;
+    temp->data = value;
+    temp->next = head;
+    head = temp;
 
-  ++size;
+    ++size;
+  }
 }
 
 /**
@@ -46,21 +51,26 @@ void LinkedList::insertStart(Song value) {
  * @param value objeto do tipo Song.
  */
 void LinkedList::insertEnd(Song value) {
-  node* temp = new node;
-
-  temp->data = value;
-  temp->next = nullptr;
-
-  if (head == nullptr) {
-    head =  temp;
-    tail = temp;
-    temp = nullptr;
+  // Evita a adição de músicas repetidas
+  if (search(value) != nullptr) {
+    cout << "A música já existe no sistema." << endl;
   } else {
-    tail->next = temp;
-    tail = temp;
-  }
+    node* temp = new node;
 
-  ++size;
+    temp->data = value;
+    temp->next = nullptr;
+
+    if (head == nullptr) {
+      head =  temp;
+      tail = temp;
+      temp = nullptr;
+    } else {
+      tail->next = temp;
+      tail = temp;
+    }
+
+    ++size;
+  }
 }
 
 /**
@@ -76,20 +86,26 @@ void LinkedList::insertPosition(size_t pos, Song value) {
   if (pos == 1) {
     insertStart(value);
   } else if (pos <= size) {
-    node* temp = new node;
+    // Evita a adição de músicas repetidas
+    if (search(value) != nullptr) {
+      cout << "A música já existe no sistema." << endl;
+    } else {
+
+      node* temp = new node;
+      
+      cur = head;
     
-    cur = head;
-  
-    for (size_t i = 1; i < pos; ++i) {
-      pre = cur;
-      cur = cur->next;
+      for (size_t i = 1; i < pos; ++i) {
+        pre = cur;
+        cur = cur->next;
+      }
+
+      temp->data = value;
+      pre->next = temp;
+      temp->next = cur;
+
+      ++size;
     }
-
-    temp->data = value;
-    pre->next = temp;
-    temp->next = cur;
-
-    ++size;
   } else {
     insertEnd(value);
   }
