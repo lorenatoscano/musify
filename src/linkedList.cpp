@@ -3,6 +3,8 @@
 #include "song.h"
 #include "utils.h"
 
+using namespace std;
+
 /** Inicializa head e tail com valores nulos e o tamanho com 0 */
 LinkedList::LinkedList() {
   head = nullptr;

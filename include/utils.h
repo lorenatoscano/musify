@@ -5,8 +5,6 @@
 
 #include <iostream>
 
-using namespace std;
-
-string toLowercase(string s); /**< Converte uma string para minúsculo */ 
+std::string toLowercase(std::string s); /**< Converte uma string para minúsculo */ 
 
 #endif

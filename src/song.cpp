@@ -1,5 +1,7 @@
 #include "song.h"
 
+using namespace std;
+
 Song::Song() {
 }
 

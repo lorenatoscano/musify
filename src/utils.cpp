@@ -3,6 +3,8 @@
 
 #include "utils.h"
 
+using namespace std;
+
 /**
  * Percorre a string passada por parâmetro convertendo cada caractere em minúsculo
  * @param s string a ser convertida

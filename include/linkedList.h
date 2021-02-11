@@ -4,8 +4,6 @@
 #include <iostream>
 #include "song.h"
 
-using namespace std;
-
 /** Struct que representa um nó da lista ligada e armazena objetos do tipo música */
 struct node {
   Song data; /**< Armazena um objeto do tipo música */ 
@@ -35,9 +33,6 @@ class LinkedList {
 
     void display(); /**< Exibe o conteúdo dos nós da lista */
 };
-
-
-
 
 
 #endif
