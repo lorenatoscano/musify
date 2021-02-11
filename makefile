@@ -1,9 +1,9 @@
 # "make" chama os alvos makeobjects e main
-all: makeobjects musify
+all: musify
 
 # Cria a pasta "objects"
 makeobjects:
-		mkdir -p objects
+		mkdir objects
 
 # Compila tudo e cria o executável "musify"
 musify: main utils song linkedList

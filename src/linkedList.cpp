@@ -186,7 +186,6 @@ node* LinkedList::search(Song searchSong) {
     // Compara os títulos e artistas desconsiderando maiúsculas
     if ( toLowercase(s.getTitle()) == toLowercase(searchSong.getTitle()) && 
         toLowercase(s.getArtist()) == toLowercase(searchSong.getArtist()) ) {
-      cout << "Encontrei!" << endl;
       // Retorna o ponteiro para o nó correspondente
       return temp; 
     }
@@ -194,9 +193,29 @@ node* LinkedList::search(Song searchSong) {
     temp = temp->next;
   }
 
-  cout << "Nao encontrei" << endl;
   return nullptr;
 }
+
+/**
+ * Percorre a lista até a posição passada por parâmetro e obtém o nó correspondente.
+ * @param pos índice da posição escolhida (a partir de 1)
+ * @return o ponteiro para o nó, caso a posição esteja dentro do tamanho da lista, ou nullptr caso contrário.
+ */
+node*LinkedList::getNode(size_t pos) {
+  // Caso a posição seja inválida, retorna nullptr
+  if (pos < 1 || pos > size) {
+    return nullptr;
+  } else {
+    node* temp = head;
+
+    for (size_t i = 1; i < pos; ++i) {
+      temp = temp->next;
+    }
+    // Retorna o ponteiro para o nó correspondente
+    return temp;
+  }
+}
+
 
 /**
  * Exibe as músicas armazenadas na lista ligada
