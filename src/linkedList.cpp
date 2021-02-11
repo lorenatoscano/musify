@@ -125,7 +125,7 @@ void LinkedList::removeFirst() {
 
 /**
  * Declara o penúltimo elemento da lista como tail e deleta o ultimo
- */
+ */ 
 void LinkedList::removeLast() {
   node* pre = nullptr;
   node* cur = nullptr;
