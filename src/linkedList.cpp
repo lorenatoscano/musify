@@ -157,7 +157,7 @@ void LinkedList::removePosition(size_t pos) {
 
   if (pos == 1) {
     removeFirst();
-  } else if (pos <= size) {
+  } else if (1 < pos <= size) {
     cur = head;
 
     for (size_t i = 1; i < pos; ++i) {
@@ -194,7 +194,7 @@ node* LinkedList::search(Song searchSong) {
 
     temp = temp->next;
   }
-
+  // Caso não encontre, retorna nullptr
   return nullptr;
 }
 
@@ -224,10 +224,12 @@ node*LinkedList::getNode(size_t pos) {
  */
 void LinkedList::display() {
   node* temp = head;
+  size_t index = 1;
 
   while (temp != nullptr) {
     Song s = temp->data;
-    cout << s.getTitle() << " - " << s.getArtist() << endl;
+    cout << index << " - " << s.getTitle() << " - " << s.getArtist() << endl << endl;
     temp = temp->next;
+    ++index;
   }
 }
