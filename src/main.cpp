@@ -5,6 +5,7 @@
 #include "song.h"
 #include "linkedList.h"
 #include "utils.h"
+#include "playlist.h"
 
 using namespace std;
 
@@ -25,7 +26,6 @@ int main(int argc, char const *argv[])
   Song* s1 = new Song;
   Song* s2 = new Song;
   Song* s3 = new Song;
-
 
   s1->setTitle("New Rules");
   s1->setArtist("Dua Lipa");
