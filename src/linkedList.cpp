@@ -228,7 +228,7 @@ void LinkedList::display() {
 
   while (temp != nullptr) {
     Song s = temp->data;
-    cout << index << " - " << s.getTitle() << " - " << s.getArtist() << endl << endl;
+    cout << index << " - " << s.getTitle() << " - " << s.getArtist() << endl;
     temp = temp->next;
     ++index;
   }

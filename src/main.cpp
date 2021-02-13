@@ -20,7 +20,7 @@ int main(int argc, char const *argv[])
   string tempTitle = ""; 
   string tempArtist = "";
   node* searchResult = nullptr; // Ponteiro para o nó retornado na busca
-  size_t index = 0; // Indice para as interações com o usuário
+  size_t index = 0; // Indice da musica na lista para as interações com o usuário
 
   Song* s1 = new Song;
   Song* s2 = new Song;
@@ -113,6 +113,16 @@ int main(int argc, char const *argv[])
 
         // Remove
         globalList->removePosition(index);
+
+        // Espera o usuário digitar enter para continuar
+        getchar();
+        getchar();
+        break;
+      }
+      case 4 : { // Listar toda as músicas
+        cout << "Músicas atuais do sistema:" << endl << endl;
+        // Imprime a lista de músicas com seus indices
+        globalList->display();
 
         // Espera o usuário digitar enter para continuar
         getchar();
