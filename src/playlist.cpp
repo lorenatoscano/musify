@@ -2,10 +2,10 @@
 
 using namespace std;
 
-/** Aloca a lista de músicas e inicializa a que está "tocando" com o valor de head */
+/** Aloca a lista de músicas e inicializa atributos */
 Playlist::Playlist() {
   songs = new LinkedList;
-  playing = songs->getHead();
+  playing = nullptr;
   count = 1;
 }
 
@@ -33,6 +33,8 @@ void Playlist::setName(string _name) {
  */
 void Playlist::insertSong(size_t pos, Song value) {
   songs->insertPosition(pos, value);
+  // Cada vez que uma nova música for inserida, playing recebe head
+  playing = songs->getHead();
 }
 
 /**
@@ -48,13 +50,15 @@ void Playlist::removeSong(size_t pos) {
  * @return o ponteiro da música a ser tocada, ou nullptr caso não tenha mais músicas
  */
 node* Playlist::playNext() {
-  if (playing->next != nullptr) {
-    cout << "DEBUG: Entrei aqui";
+  if (playing != nullptr) {
+    // Guarda a música atual
     node* temp = playing;
+    // Playing recebe a próxima música
     playing = playing->next;
+    // Retorna a atual a ser tocada
     return temp;
-  }
-  cout << "DEBUG: Entrei no else"; 
+  } 
+  // Retorna nullptr caso não tenha mais nenhuma a tocar
   return nullptr;
 }
 

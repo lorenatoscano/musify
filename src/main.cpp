@@ -54,10 +54,10 @@ int main(int argc, char const *argv[])
   node* temp = p1->playNext();
   if (temp != nullptr) {
     cout << "Tocando " << temp->data.getTitle() << " - " << temp->data.getArtist() << endl;
-    cout << "entrei";
   } else {
-    cout << "Nulo";
+    cout << "Fim da playlist" << endl;
   }
+ 
 
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   // while (option != 0) {
