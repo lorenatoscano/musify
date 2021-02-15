@@ -20,6 +20,9 @@ class LinkedList {
     LinkedList(); /**< Construtor da lista ligada */
     ~LinkedList(); /**< Destrutor da lista ligada */
 
+    node* getHead(); /**< Obtém o ponteiro do head */
+    size_t getSize(); /**< Obtém o tamanho da lista */
+
     void insertStart(Song value); /**< Insere um nó no início */
     void insertEnd(Song value); /**< Insere um nó no fim */
     void insertPosition(size_t pos, Song value); /**< Insere um nó numa posição específica */

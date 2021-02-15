@@ -29,6 +29,14 @@ LinkedList::~LinkedList() {
   }
 }
 
+node* LinkedList::getHead() {
+  return head;
+}
+
+size_t LinkedList::getSize() {
+  return size;
+}
+
 /**
  * Cria e insere no início da lista um nó que armazena a música passada por argumento
  * @param value objeto do tipo Song.

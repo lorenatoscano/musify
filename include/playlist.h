@@ -10,18 +10,22 @@
 class Playlist {
   private:
     std::string name; /**< Nome da playlist */
-    LinkedList songs; /**< Lista que armazena as músicas */
+    LinkedList* songs; /**< Ponteiro para a lista que armazena as músicas */
+    node* playing; /**< Ponteiro para o nó da música que está "tocando" */
+    size_t count; /**< Contador para o método de display */
   public:
     Playlist(); /**< Construtor da playlist */
     ~Playlist(); /**< Destrutor da playlist */
 
+    LinkedList* getSongs(); /**< Obtém o ponteiro da lista de músicas */
+
     std::string getName(); /**< Obtém o nome da playlist */
     void setName(std::string _name); /**< Adiciona o nome da playlist */
 
-    void insertSong(Song value); /**< Insere uma música na playlist */
-    void removeSong(); /**< Remove uma música da playlist */
+    void insertSong(size_t pos, Song value); /**< Insere uma música na playlist */
+    void removeSong(size_t pos); /**< Remove uma música da playlist */
     
-    node* playNext(node* current); /**< Retorna a próxima música a ser tocada */
+    node* playNext(); /**< Retorna a próxima música a ser tocada */
 
     void displayAllSongs(node* current); /**< Imprime todas as músicas que compoem uma playlist */
 };
