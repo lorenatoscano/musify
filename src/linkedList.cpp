@@ -25,7 +25,6 @@ LinkedList::~LinkedList() {
       delete cur;
       cur = temp;
     }
-    
   }
 }
 
@@ -165,7 +164,7 @@ void LinkedList::removePosition(size_t pos) {
 
   if (pos == 1) {
     removeFirst();
-  } else if (1 < pos <= size) {
+  } else if (pos <= size) {
     cur = head;
 
     for (size_t i = 1; i < pos; ++i) {

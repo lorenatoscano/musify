@@ -6,6 +6,7 @@
 #include "linkedList.h"
 #include "utils.h"
 #include "playlist.h"
+#include "listOfPlaylists.h"
 
 using namespace std;
 
@@ -15,16 +16,21 @@ int main(int argc, char const *argv[])
 { 
   // Cria a lista global de músicas do sistema
   LinkedList* globalList = new LinkedList;
+  // Cria a lista de armazenar as playlists do sistema
+  ListOfPlaylists* playlists = new ListOfPlaylists;
+
 
   size_t option = 11; // Opção selecionada no menu
   Song tempSong; // Música e atributos temporários para as interações com o usuário
   string tempTitle = ""; 
   string tempArtist = "";
   node* searchResult = nullptr; // Ponteiro para o nó retornado na busca
+  Playlist* tempPlaylist = nullptr;
   size_t index = 0; // Indice da musica na lista para as interações com o usuário
 
   // Variaveis e valores estabelecidos para testar as funcionalidades
-  Playlist* p1 = new Playlist;
+  Playlist* p1 = nullptr;
+  p1 = new Playlist;
 
   Song* s1 = new Song;
   Song* s2 = new Song;
@@ -130,6 +136,12 @@ int main(int argc, char const *argv[])
           cout << "Insira o índice da música a ser removida (consulte a lista de músicas): ";
           cin >> index;
 
+          // Tratamento para garantir que a entrada é válida
+          while (index == 0 || index > globalList->getSize()) {
+            cout << "Índice inválido! Insira o índice da música a ser removida (consulte a lista de músicas):  ";
+            cin >> index;
+          }
+
           // Acessa a música pelo indice
           searchResult = globalList->getNode(index);
           cout << "A música " << searchResult->data.getTitle()  << " - " << searchResult->data.getArtist() << " será removida do sistema." << endl;
@@ -158,16 +170,66 @@ int main(int argc, char const *argv[])
         getchar();
         break;
       }
-      case 5 : {
+      case 5 : { // Adicionar uma playlist
+        // Le a entrada
+        cout << "Nome da playlist: ";
+        cin.ignore(256, '\n');
+        getline(cin, tempTitle);
 
+        // Aloca a nova playlist
+        tempPlaylist = new Playlist;
+
+        // Adiciona o nome escolhido
+        tempPlaylist->setName(tempTitle);
+
+        // Insere na lista
+        playlists->insertPlaylist(tempPlaylist);
+
+        cout << "Playlist criada! Adicione algumas músicas." << endl;
+        // Espera o usuário digitar enter para continuar
+        getchar();
         break;
       }
-      case 6 : {
+      case 6 : { // Remover uma playlist
+        // Tratamento para garantir que há playlists adicionadas
+        if (playlists->getSize() == 0) {
+          cout << "Ainda não há nada aqui. Experimente adicionar algumas playlists." << endl;
+        } else {
+          // Imprime a lista de músicas com seus indices
+          playlists->display();
 
+          // Lê a entrada
+          cout << "Insira o índice da playlist a ser removida (consulte a lista de playlists): ";
+          cin >> index;
+
+          // Tratamento para garantir que a entrada é válida
+          while (index == 0 || index > playlists->getSize()) {
+            cout << "Índice inválido! Insira o índice da playlist a ser removida (consulte a lista de playlists):  ";
+            cin >> index;
+          }
+          
+          // Remove a playlist
+          playlists->removePlaylist(index);
+          cout << "Remoção concluída com sucesso." << endl;
+        }
+
+        // Espera o usuário digitar enter para continuar
+        getchar();
+        getchar();
         break;
       }
-      case 7 : {
-
+      case 7 : { // Listar todas as playlists
+        // Tratamento para garantir que há playlists adicionadas
+        if (playlists->getSize() == 0) {
+          cout << "Ainda não há nada aqui. Experimente adicionar algumas playlists." << endl;
+        } else {
+          cout << "Playlists atuais do sistema:" << endl << endl;
+          // Imprime a lista de músicas com seus indices
+         playlists->display();
+        }
+        // Espera o usuário digitar enter para continuar
+        getchar();
+        getchar();
         break;
       }
       case 8 : { // Listar músicas de uma playlist
@@ -248,7 +310,9 @@ int main(int argc, char const *argv[])
 
   delete p1;
 
+  delete tempPlaylist;
   delete globalList;
+  delete playlists;
 
   return 0;
 }
