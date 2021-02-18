@@ -93,7 +93,11 @@ void LinkedList::insertPosition(size_t pos, Song value) {
   node* cur = nullptr;
 
   if (pos == 1) {
-    insertStart(value);
+    if (size == 0) {
+      insertEnd(value);
+    } else {
+      insertStart(value);
+    } 
   } else if (pos <= size) {
     // Evita a adição de músicas repetidas
     if (search(value) != nullptr) {
