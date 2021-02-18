@@ -19,40 +19,17 @@ int main(int argc, char const *argv[])
   // Cria a lista de armazenar as playlists do sistema
   ListOfPlaylists* playlists = new ListOfPlaylists;
 
-
   size_t option = 11; // Opção selecionada no menu
+  node* searchResult = nullptr; // Ponteiro para o nó retornado na busca
+  size_t index = 0; // Indice na lista para as interações com o usuário
+  // Variáveis temporárias para armazenar as entradas do usuário
+  Playlist* tempPlaylist = nullptr;
   Song tempSong; // Música e atributos temporários para as interações com o usuário
   string tempTitle = ""; 
   string tempArtist = "";
-  node* searchResult = nullptr; // Ponteiro para o nó retornado na busca
-  Playlist* tempPlaylist = nullptr;
-  size_t index = 0; // Indice na lista para as interações com o usuário
+  
 
   // Variaveis e valores estabelecidos para testar as funcionalidades
-  // Playlist* p1 = nullptr;
-  // p1 = new Playlist;
-
-  // Song* s1 = new Song;
-  // Song* s2 = new Song;
-  // Song* s3 = new Song;
-
-  // s1->setTitle("New Rules");
-  // s1->setArtist("Dua Lipa");
-
-  // s2->setTitle("Paradise");
-  // s2->setArtist("Coldplay");
-
-  // s3->setTitle("Zombie");
-  // s3->setArtist("The Cramberries");
-  
-  // globalList->insertPosition(2, *s1);
-  // globalList->insertPosition(1, *s2);
-  // globalList->insertPosition(2, *s3);
-
-  // p1->setName("Favoritas");
-  // p1->insertSong(2, *s1);
-  // p1->insertSong(1, *s2);
-  // p1->insertSong(2, *s3);
 
   // cout << p1->getName() << ":" <<  endl;
   // p1->displayAllSongs(p1->getSongs()->getHead());

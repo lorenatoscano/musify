@@ -1,12 +1,12 @@
 # "make" chama os alvos makeobjects e main
-all: musify
+all: makeobjects musify
 
 # Cria a pasta "objects"
 makeobjects:
 		mkdir -p objects
 
 # Compila tudo e cria o executável "musify"
-musify: objects/main.o objects/utils.o objects/song.o objects/linkedList.o objects/playlist.o
+musify: objects/main.o objects/utils.o objects/song.o objects/linkedList.o objects/playlist.o objects/listOfPlaylists.o
 		g++ objects/*.o -Iinclude -Wall -pedantic -ansi -std=c++11 -g -o musify
 
 objects/main.o: src/main.cpp objects/utils.o objects/song.o objects/linkedList.o
@@ -23,6 +23,9 @@ objects/linkedList.o: src/linkedList.cpp objects/utils.o objects/song.o
 
 objects/playlist.o: src/playlist.cpp objects/linkedList.o objects/song.o objects/utils.o
 		g++ src/playlist.cpp -Iinclude -Wall -pedantic -ansi -std=c++11 -g -c -o objects/playlist.o
+
+objects/listOfPlaylists.o: src/listOfPlaylists.cpp objects//playlist.o
+		g++ src/listOfPlaylists.cpp -Iinclude -Wall -pedantic -ansi -std=c++11 -g -c -o objects/listOfPlaylists.o
 
 # Remove a pasta objects e o arquivo executável
 clean:
