@@ -254,19 +254,19 @@ int main(int argc, char const *argv[])
             cout << "Posição inválida. Tente novamente:" << endl;
             cin >> index;
           }
-            // Atribui num objeto do tipo Song
-            tempSong.setTitle(tempTitle);
-            tempSong.setArtist(tempArtist);
-            
-            // Busca pela música no sistema
-            searchResult = globalList->search(tempSong);
-            if (searchResult == nullptr) {
-              cout << endl << "A música não está cadastrada no sistema! Cadastre a música antes de adicionar a uma playlist." << endl;
-            } else {
-              // Adiciona na playlist
-              tempPlaylist->insertSong(index, tempSong);
-              cout << endl << "Música adicionada à playlist '" << tempPlaylist->getName() << "'" << endl;
-            }
+          // Atribui num objeto do tipo Song
+          tempSong.setTitle(tempTitle);
+          tempSong.setArtist(tempArtist);
+          
+          // Busca pela música no sistema
+          searchResult = globalList->search(tempSong);
+          if (searchResult == nullptr) {
+            cout << endl << "A música não está cadastrada no sistema! Cadastre a música antes de adicionar a uma playlist." << endl;
+          } else {
+            // Adiciona na playlist
+            tempPlaylist->insertSong(index, tempSong);
+            cout << endl << "Música adicionada à playlist '" << tempPlaylist->getName() << "'" << endl;
+          }
         }
         // Espera o usuário digitar enter para continuar 
         cout << endl << "Pressione 'enter' para continuar." << endl;
@@ -339,7 +339,6 @@ int main(int argc, char const *argv[])
 
           // Obtém a playlist pelo índice
           tempPlaylist = playlists->getPlaylist(index);
-          cout << "Playlist selecionada: " << tempPlaylist->getName() << endl;
 
           // Tratamento para garantir que há músicas adicionadas
           if (tempPlaylist->getSongs()->getSize() == 0) {
@@ -355,13 +354,10 @@ int main(int argc, char const *argv[])
         getchar();
         break;
       }
-      
       default: {
-        cout << "Entrada inválida! Tente novamente." << endl;
+        cout << "Encerrando o programa." << endl;
         break;
-      }
-
-        
+      }    
     }
 
   }
