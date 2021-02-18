@@ -29,40 +29,40 @@ int main(int argc, char const *argv[])
   size_t index = 0; // Indice na lista para as interações com o usuário
 
   // Variaveis e valores estabelecidos para testar as funcionalidades
-  Playlist* p1 = nullptr;
-  p1 = new Playlist;
+  // Playlist* p1 = nullptr;
+  // p1 = new Playlist;
 
-  Song* s1 = new Song;
-  Song* s2 = new Song;
-  Song* s3 = new Song;
+  // Song* s1 = new Song;
+  // Song* s2 = new Song;
+  // Song* s3 = new Song;
 
-  s1->setTitle("New Rules");
-  s1->setArtist("Dua Lipa");
+  // s1->setTitle("New Rules");
+  // s1->setArtist("Dua Lipa");
 
-  s2->setTitle("Paradise");
-  s2->setArtist("Coldplay");
+  // s2->setTitle("Paradise");
+  // s2->setArtist("Coldplay");
 
-  s3->setTitle("Zombie");
-  s3->setArtist("The Cramberries");
+  // s3->setTitle("Zombie");
+  // s3->setArtist("The Cramberries");
   
-  globalList->insertPosition(2, *s1);
-  globalList->insertPosition(1, *s2);
-  globalList->insertPosition(2, *s3);
+  // globalList->insertPosition(2, *s1);
+  // globalList->insertPosition(1, *s2);
+  // globalList->insertPosition(2, *s3);
 
-  p1->setName("Favoritas");
-  p1->insertSong(2, *s1);
-  p1->insertSong(1, *s2);
-  p1->insertSong(2, *s3);
+  // p1->setName("Favoritas");
+  // p1->insertSong(2, *s1);
+  // p1->insertSong(1, *s2);
+  // p1->insertSong(2, *s3);
 
-  cout << p1->getName() << ":" <<  endl;
-  p1->displayAllSongs(p1->getSongs()->getHead());
+  // cout << p1->getName() << ":" <<  endl;
+  // p1->displayAllSongs(p1->getSongs()->getHead());
 
-  node* temp = p1->playNext();
-  if (temp != nullptr) {
-    cout << "Tocando " << temp->data.getTitle() << " - " << temp->data.getArtist() << endl;
-  } else {
-    cout << "Fim da playlist" << endl;
-  }
+  // node* temp = p1->playNext();
+  // if (temp != nullptr) {
+  //   cout << "Tocando " << temp->data.getTitle() << " - " << temp->data.getArtist() << endl;
+  // } else {
+  //   cout << "Fim da playlist" << endl;
+  // }
  
 
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
@@ -77,34 +77,7 @@ int main(int argc, char const *argv[])
     cout << endl << "----------------------------------------" << endl << endl;
 
     switch (option) {
-      case 1 : { // Buscar uma música 
-        // Le as entradas
-        cout << "Título da música: ";
-        cin.ignore(256, '\n');
-        getline(cin, tempTitle);
-        cout << "Artista da música: ";
-        getline(cin, tempArtist);
-
-        // Atribui num objeto do tipo Song
-        tempSong.setTitle(tempTitle);
-        tempSong.setArtist(tempArtist);
-        
-        // Efetua a busca
-        cout << "Buscando..." << endl;
-        searchResult = globalList->search(tempSong);
-
-        // Da o retorno
-        if (searchResult == nullptr) {
-          cout << "Essa música ainda não existe no sistema. Por favor, verifique a ortografia e tente novamente ou adicione como nova música." << endl;
-        } else {
-          cout << "A música " << searchResult->data.getTitle() << " - " << searchResult->data.getArtist() << " encontra-se no sistema!" << endl;
-        }
-        
-        // Espera o usuário digitar enter para continuar
-        getchar();
-        break;
-      }
-      case 2 : { // Adicionar uma música
+      case 1 : { // Adicionar uma música
         // Le as entradas
         cout << "Título da música: ";
         cin.ignore(256, '\n');
@@ -117,14 +90,15 @@ int main(int argc, char const *argv[])
         tempSong.setArtist(tempArtist);
 
         // Adiciona ao final da lista global
-        cout << "Adicionando..." << endl;
         globalList->insertEnd(tempSong);
+        cout << "Música cadastrada com sucesso!" << endl;
 
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         break;
       }
-      case 3 : { // Remover uma música
+      case 2 : { // Remover uma música
         // Tratamento para garantir que há músicas adicionadas
         if (globalList->getSize() == 0) {
           cout << "Ainda não há nada aqui. Experimente adicionar algumas músicas." << endl;
@@ -150,15 +124,18 @@ int main(int argc, char const *argv[])
           globalList->removePosition(index);
 
           // Remove de todas as playlists
-          playlists->removeFromAll(searchResult->data);
+          if (playlists->getSize() > 0) {
+            playlists->removeFromAll(searchResult->data);
+          }
         }
         
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         getchar();
         break;
       }
-      case 4 : { // Listar todas as músicas
+      case 3 : { // Listar todas as músicas
         // Tratamento para garantir que há músicas adicionadas
         if (globalList->getSize() == 0) {
           cout << "Ainda não há nada aqui. Experimente adicionar algumas músicas." << endl;
@@ -169,7 +146,36 @@ int main(int argc, char const *argv[])
         }
       
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
+        getchar();
+        break;
+      }
+      case 4 : { // Buscar uma música 
+        // Le as entradas
+        cout << "Título da música: ";
+        cin.ignore(256, '\n');
+        getline(cin, tempTitle);
+        cout << "Artista da música: ";
+        getline(cin, tempArtist);
+
+        // Atribui num objeto do tipo Song
+        tempSong.setTitle(tempTitle);
+        tempSong.setArtist(tempArtist);
+        
+        // Efetua a busca
+        cout << "Buscando..." << endl;
+        searchResult = globalList->search(tempSong);
+
+        // Da o retorno
+        if (searchResult == nullptr) {
+          cout << "Essa música ainda não existe no sistema. Por favor, verifique a ortografia e tente novamente ou adicione como nova música." << endl;
+        } else {
+          cout << "A música " << searchResult->data.getTitle() << " - " << searchResult->data.getArtist() << " encontra-se no sistema!" << endl;
+        }
+        
+        // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         break;
       }
@@ -190,6 +196,8 @@ int main(int argc, char const *argv[])
 
         cout << "Playlist criada! Adicione algumas músicas." << endl;
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
+        getchar();
         getchar();
         break;
       }
@@ -217,6 +225,7 @@ int main(int argc, char const *argv[])
         }
 
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         getchar();
         break;
@@ -231,6 +240,7 @@ int main(int argc, char const *argv[])
          playlists->display();
         }
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         getchar();
         break;
@@ -278,15 +288,21 @@ int main(int argc, char const *argv[])
             } else {
               // Adiciona na playlist
               tempPlaylist->insertSong(index, tempSong);
+              cout << "Música adicionada à playlist '" << tempPlaylist->getName() << "'" << endl;
             }
         }
         // Espera o usuário digitar enter para continuar 
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         getchar();
         break;
       }
       case 9 : { // Remover música de uma playlist
-
+        cout << "Em construção" << endl;
+        // Espera o usuário digitar enter para continuar 
+        cout << endl << "Pressione 'enter' para continuar." << endl;
+        getchar();
+        getchar();
         break;
       }
       case 10 : { // Listar músicas de uma playlist
@@ -316,6 +332,7 @@ int main(int argc, char const *argv[])
           }
         }
         // Espera o usuário digitar enter para continuar
+        cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
         getchar();
         break;
@@ -347,11 +364,11 @@ int main(int argc, char const *argv[])
   // node* result = queue->search(tempSong);
   // cout << result << endl;
 
-  delete s1;
-  delete s2;
-  delete s3;
+  // delete s1;
+  // delete s2;
+  // delete s3;
 
-  delete p1;
+  // delete p1;
 
   delete tempPlaylist;
   delete globalList;
@@ -368,10 +385,10 @@ void displayMenu() {
 
   cout << "0 - Sair" << endl;
   cout << "----- Gerenciar músicas do sistema -----" << endl;
-  cout << "1 - Buscar uma música" << endl;
-  cout << "2 - Adicionar uma música" << endl;
-  cout << "3 - Remover uma música" << endl;
-  cout << "4 - Listar todas as músicas" << endl;
+  cout << "1 - Adicionar uma música" << endl;
+  cout << "2 - Remover uma música" << endl;
+  cout << "3 - Listar todas as músicas" << endl;
+  cout << "4 - Buscar uma música" << endl;
 
   cout << "---- Gerenciar playlists do sistema ----" << endl;
   cout << "5 - Adicionar uma playlist" << endl;
@@ -384,5 +401,5 @@ void displayMenu() {
   cout << "10 - Listar músicas de uma playlist" << endl;
 
   cout << "----------------------------------------" << endl << endl;
-  cout << "Escolha uma das opções cima: ";
+  cout << "Escolha uma das opções acima: ";
 }

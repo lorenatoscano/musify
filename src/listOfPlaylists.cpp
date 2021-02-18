@@ -86,7 +86,7 @@ void ListOfPlaylists::removePlaylist(size_t pos) {
 
   if (pos == 1) {
     head = head->next;
-  } else if (pos <= size) {
+  } else if (pos < size) {
     for (size_t i = 1; i < pos; ++i) {
       pre = cur;
       cur = cur->next;
