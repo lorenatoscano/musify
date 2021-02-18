@@ -97,13 +97,13 @@ int main(int argc, char const *argv[])
           searchResult = globalList->getNode(index);
           cout << "A música " << searchResult->data.getTitle()  << " - " << searchResult->data.getArtist() << " será removida do sistema." << endl;
 
-          // Remove da lista global
-          globalList->removePosition(index);
-
           // Remove de todas as playlists
           if (playlists->getSize() > 0) {
             playlists->removeFromAll(searchResult->data);
           }
+
+          // Remove da lista global
+          globalList->removePosition(index);
         }
         
         // Espera o usuário digitar enter para continuar
