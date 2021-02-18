@@ -198,7 +198,6 @@ int main(int argc, char const *argv[])
         // Espera o usuário digitar enter para continuar
         cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
-        getchar();
         break;
       }
       case 6 : { // Remover uma playlist
@@ -262,6 +261,7 @@ int main(int argc, char const *argv[])
 
           // Obtém a playlist pelo índice
           tempPlaylist = playlists->getPlaylist(index);
+          cout << "Playlist selecionada: " << tempPlaylist->getName() << endl;
 
           // Le as entradas
           cout << "Título da música: ";
@@ -284,11 +284,11 @@ int main(int argc, char const *argv[])
             // Busca pela música no sistema
             searchResult = globalList->search(tempSong);
             if (searchResult == nullptr) {
-              cout << "A música não está cadastrada no sistema! Cadastre a música antes de adicionar a uma playlist." << endl;
+              cout << endl << "A música não está cadastrada no sistema! Cadastre a música antes de adicionar a uma playlist." << endl;
             } else {
               // Adiciona na playlist
               tempPlaylist->insertSong(index, tempSong);
-              cout << "Música adicionada à playlist '" << tempPlaylist->getName() << "'" << endl;
+              cout << endl << "Música adicionada à playlist '" << tempPlaylist->getName() << "'" << endl;
             }
         }
         // Espera o usuário digitar enter para continuar 
@@ -298,7 +298,47 @@ int main(int argc, char const *argv[])
         break;
       }
       case 9 : { // Remover música de uma playlist
-        cout << "Em construção" << endl;
+        // Tratamento para garantir que há playlists adicionadas
+        if (playlists->getSize() == 0) {
+          cout << "Ainda não há nada aqui. Experimente adicionar algumas playlists." << endl;
+        } else {
+          // Lê a entrada
+          cout << "Insira o índice da playlist desejada (consulte a lista de playlists): ";
+          cin >> index;
+
+          // Tratamento para garantir que a entrada é válida
+          while (index < 1 || index > playlists->getSize()) {
+            cout << "Índice inválido! Tente novamente:" << endl;
+            cin >> index;
+          }
+
+          // Obtém a playlist pelo índice
+          tempPlaylist = playlists->getPlaylist(index);
+          cout << "Playlist selecionada: " << tempPlaylist->getName() << endl;
+
+          // Tratamento para garantir que há músicas adicionadas
+          if (tempPlaylist->getSongs()->getSize() == 0) {
+            cout << "Ainda não há nada aqui. Experimente adicionar algumas músicas." << endl;
+          } else {
+            // Imprime a lista de músicas com seus indices
+            tempPlaylist->displayAllSongs(tempPlaylist->getSongs()->getHead());
+            
+            // Lê a entrada
+            cout << "Insira o índice da música a ser removida (consulte a lista de músicas): ";
+            cin >> index;
+
+            // Tratamento para garantir que a entrada é válida
+            while (index < 1 || index > tempPlaylist->getSongs()->getSize()) {
+              cout << "Índice inválido! Tente novamente:" << endl;
+              cin >> index;
+            }
+            
+            // Remove a música
+            tempPlaylist->removeSong(index);
+            cout << endl << "Música removida da playlist '" << tempPlaylist->getName() << "'" << endl;
+          }
+        }
+        
         // Espera o usuário digitar enter para continuar 
         cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();
@@ -322,10 +362,11 @@ int main(int argc, char const *argv[])
 
           // Obtém a playlist pelo índice
           tempPlaylist = playlists->getPlaylist(index);
+          cout << "Playlist selecionada: " << tempPlaylist->getName() << endl;
 
           // Tratamento para garantir que há músicas adicionadas
           if (tempPlaylist->getSongs()->getSize() == 0) {
-            cout << "Ainda não há nada aqui. Experimente adicionar algumas músicas." << endl;
+            cout << endl << "Ainda não há nada aqui. Experimente adicionar algumas músicas." << endl;
           } else {
             cout << "Músicas da playlist '" << tempPlaylist->getName() << "':" << endl;
             tempPlaylist->displayAllSongs(tempPlaylist->getSongs()->getHead());
@@ -338,37 +379,15 @@ int main(int argc, char const *argv[])
         break;
       }
       
-      default:
+      default: {
+        cout << "Entrada inválida! Tente novamente." << endl;
         break;
+      }
+
+        
     }
 
   }
-  
-
-  
-
-  // queue->display();
-
-  // node* result = queue->getNode(2);
-  // cout << result << " - ";
-  // cout << result->data.getTitle() << endl;
-
-  // queue->removePosition(2);
-
-  // cout << endl;
-  // queue->display();
-
-  // Song tempSong;
-  // tempSong.setArtist("Dua Lipa");
-  // tempSong.setTitle("NeW Rules");
-  // node* result = queue->search(tempSong);
-  // cout << result << endl;
-
-  // delete s1;
-  // delete s2;
-  // delete s3;
-
-  // delete p1;
 
   delete tempPlaylist;
   delete globalList;
@@ -397,8 +416,8 @@ void displayMenu() {
 
   cout << "---- Gerenciar músicas numa playlist ---" << endl;
   cout << "8 - Adicionar música a uma playlist" << endl;
-  cout << "9 - Remover música de uma playlist" << endl << endl;
-  cout << "10 - Listar músicas de uma playlist" << endl;
+  cout << "9 - Remover música de uma playlist" << endl;
+  cout << "10 - Listar músicas de uma playlist" << endl << endl;
 
   cout << "----------------------------------------" << endl << endl;
   cout << "Escolha uma das opções acima: ";
