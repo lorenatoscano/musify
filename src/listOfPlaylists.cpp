@@ -20,6 +20,7 @@ ListOfPlaylists::~ListOfPlaylists() {
 
     while (cur != nullptr) {
       temp = cur->next;
+      delete cur->data;
       delete cur;
       cur = temp;
     }
@@ -28,6 +29,26 @@ ListOfPlaylists::~ListOfPlaylists() {
 
 size_t ListOfPlaylists::getSize() {
   return size;
+}
+
+/**
+ * Percorre a lista até a posição passada por parâmetro e obtém o ponteiro da playlist correspondente.
+ * @param pos índice da posição escolhida (a partir de 1)
+ * @return o ponteiro para a playlist, caso a posição esteja dentro do tamanho da lista, ou nullptr caso contrário.
+ */
+Playlist* ListOfPlaylists::getPlaylist(size_t pos) {
+  // Caso a posição seja inválida, retorna nullptr
+  if (pos < 1 || pos > size) {
+    return nullptr;
+  } else {
+    node_* temp = head;
+
+    for (size_t i = 1; i < pos; ++i) {
+      temp = temp->next;
+    }
+    // Retorna o ponteiro para a playlist correspondente
+    return temp->data;
+  }
 }
 
 /**
@@ -100,5 +121,30 @@ void ListOfPlaylists::display() {
     cout << index << " - " << name << endl;
     temp = temp->next;
     ++index;
+  }
+}
+
+
+/**
+ * Percorre todas as playlists do sistema e remove delas a música passada por parâmetro.
+ * @param target objeto do tipo Song com a música a ser removida
+ */
+void ListOfPlaylists::removeFromAll(Song target) {
+  node_* temp = head;
+
+  // Percorre as playlists do sistema
+  while (temp != nullptr) {
+    // Guarda a lista de músicas atual
+    LinkedList* songs = temp->data->getSongs();
+
+    // Verifica se o alvo está na lista 
+    if (songs->search(target) != nullptr) {
+      // Obtém a posição numérica da música
+      size_t pos = songs->getPosition(target);
+      // Remove a música da lista
+      songs->removePosition(pos);
+    }
+
+    temp = temp->next;
   }
 }

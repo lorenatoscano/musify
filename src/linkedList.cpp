@@ -210,7 +210,7 @@ node* LinkedList::search(Song searchSong) {
  * @param pos índice da posição escolhida (a partir de 1)
  * @return o ponteiro para o nó, caso a posição esteja dentro do tamanho da lista, ou nullptr caso contrário.
  */
-node*LinkedList::getNode(size_t pos) {
+node* LinkedList::getNode(size_t pos) {
   // Caso a posição seja inválida, retorna nullptr
   if (pos < 1 || pos > size) {
     return nullptr;
@@ -223,6 +223,32 @@ node*LinkedList::getNode(size_t pos) {
     // Retorna o ponteiro para o nó correspondente
     return temp;
   }
+}
+
+/**
+ * Percorre a lista até encontrar a música passada por parâmetro e obtém a posição correspondente.
+ * @param searchSong música a ser buscada
+ * @return a posição na lista, caso a busca tenha sucesso, ou 0 caso contrário
+ */
+size_t LinkedList::getPosition(Song searchSong) {
+  node* temp = head;
+  size_t pos = 1;
+
+  while (temp != nullptr) {
+    Song s = temp->data;
+
+    // Compara os títulos e artistas desconsiderando maiúsculas
+    if ( toLowercase(s.getTitle()) == toLowercase(searchSong.getTitle()) && 
+        toLowercase(s.getArtist()) == toLowercase(searchSong.getArtist()) ) {
+      // Retorna a posição correspondente
+      return pos; 
+    }
+
+    temp = temp->next;
+    ++pos;
+  }
+  // Caso não encontre, retorna 0
+  return 0;
 }
 
 

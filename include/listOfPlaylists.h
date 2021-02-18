@@ -22,9 +22,13 @@ class ListOfPlaylists {
 
     size_t getSize(); /**< Obtém o tamanho da lista */
 
+    Playlist* getPlaylist(size_t pos); /**< Retorna o ponteiro para a playlist com base na posição na lista*/
+
     void insertPlaylist(Playlist* value); /**< Insere um nó da playlist no fim da lista */
 
     void removePlaylist(size_t pos); /**< Remove o nó da playlist de uma posição específica */
+
+    void removeFromAll(Song target); /**< Remove uma música de todas as playlists */
 
     void display(); /**< Exibe o conteúdo dos nós da lista */
 

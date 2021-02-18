@@ -33,6 +33,7 @@ class LinkedList {
 
     node* search(Song searchSong); /**< Busca um nó com base nos atributos da música */
     node* getNode(size_t pos); /**< Retorna um nó com base na posição */
+    size_t getPosition(Song searchSong); /**< Retorna a posição de uma música na lista */
 
     void display(); /**< Exibe o conteúdo dos nós da lista */
 };
