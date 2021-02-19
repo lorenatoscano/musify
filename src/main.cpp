@@ -25,7 +25,7 @@ int main(int argc, char const *argv[])
   size_t index2 = 0; // Indice na lista para as interações com o usuário
   // Variáveis temporárias para armazenar as entradas do usuário
   Playlist* tempPlaylist = nullptr;
-  Song tempSong; // Música e atributos temporários para as interações com o usuário
+  Song tempSong;
   string tempTitle = ""; 
   string tempArtist = "";
 
@@ -158,7 +158,6 @@ int main(int argc, char const *argv[])
         // Insere na lista
         playlists->insertPlaylist(tempPlaylist);
 
-        cout << "Playlist criada! Adicione algumas músicas." << endl;
         // Espera o usuário digitar enter para continuar
         cout << endl << "Pressione 'enter' para continuar." << endl;
         getchar();

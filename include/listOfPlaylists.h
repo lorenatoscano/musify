@@ -23,6 +23,7 @@ class ListOfPlaylists {
     size_t getSize(); /**< Obtém o tamanho da lista */
 
     Playlist* getPlaylist(size_t pos); /**< Retorna o ponteiro para a playlist com base na posição na lista*/
+    Playlist* searchPlaylist(std::string searchName); /**< Retorna o ponteiro para a playlist com base no nome da playlist */
 
     void insertPlaylist(Playlist* value); /**< Insere um nó da playlist no fim da lista */
 

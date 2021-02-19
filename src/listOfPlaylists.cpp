@@ -1,5 +1,6 @@
 #include <iostream>
 #include "listOfPlaylists.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -52,25 +53,53 @@ Playlist* ListOfPlaylists::getPlaylist(size_t pos) {
 }
 
 /**
+ * Percorre a lista procurando a playlist com o mesmo nome passado por parâmetro e obtém o ponteiro correspondente. Desconsidera maíusculas.
+ * @param searchName playlist a ser buscada
+ * @return o ponteiro para a playlist, caso a busca tenha sucesso, ou nullptr caso contrário.
+ */
+Playlist* ListOfPlaylists::searchPlaylist(string searchName) {
+  node_* temp = head;
+
+  while (temp != nullptr) {
+    // Compara os nomes desconsiderando maiúsculas
+    if ( toLowercase(temp->data->getName()) == toLowercase(searchName) ) {
+      // Retorna o ponteiro para o nó correspondente
+      return temp->data; 
+    }
+
+    temp = temp->next;
+  }
+  // Caso não encontre, retorna nullptr
+  return nullptr;
+}
+
+
+
+/**
  * Cria e insere no fim da lista um nó que armazena aa playlist passada por argumento
  * @param value ponteiro para objeto do tipo Playlist.
  */
 void ListOfPlaylists::insertPlaylist(Playlist* value) {
-  node_* temp = new node_;
-
-  temp->data = value;
-  temp->next = nullptr;
-
-  if (head == nullptr) {
-    head =  temp;
-    tail = temp;
-    temp = nullptr;
+  if (searchPlaylist(value->getName()) != nullptr) {
+    cout << "Já existe uma playlist com esse nome no sistema." << endl;
   } else {
-    tail->next = temp;
-    tail = temp;
-  }
+    node_* temp = new node_;
 
-  ++size;
+    temp->data = value;
+    temp->next = nullptr;
+
+    if (head == nullptr) {
+      head =  temp;
+      tail = temp;
+      temp = nullptr;
+    } else {
+      tail->next = temp;
+      tail = temp;
+    }
+
+    ++size;
+    cout << "Playlist criada! Adicione algumas músicas." << endl;
+  }
 }
 
 /**
@@ -109,23 +138,6 @@ void ListOfPlaylists::removePlaylist(size_t pos) {
 }
 
 /**
- * Exibe as playlists armazenadas na lista ligada
- */
-void ListOfPlaylists::display() {
-  node_* temp = head;
-  size_t index = 1;
-  string name = "";
-
-  while (temp != nullptr) {
-    name = temp->data->getName();
-    cout << index << " - " << name << endl;
-    temp = temp->next;
-    ++index;
-  }
-}
-
-
-/**
  * Percorre todas as playlists do sistema e remove delas a música passada por parâmetro.
  * @param target objeto do tipo Song com a música a ser removida
  */
@@ -148,3 +160,21 @@ void ListOfPlaylists::removeFromAll(Song target) {
     temp = temp->next;
   }
 }
+
+/**
+ * Exibe as playlists armazenadas na lista ligada
+ */
+void ListOfPlaylists::display() {
+  node_* temp = head;
+  size_t index = 1;
+  string name = "";
+
+  while (temp != nullptr) {
+    name = temp->data->getName();
+    cout << index << " - " << name << endl;
+    temp = temp->next;
+    ++index;
+  }
+}
+
+
