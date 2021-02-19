@@ -336,7 +336,7 @@ int main(int argc, char const *argv[])
             tempPlaylist->displayAllSongs(tempPlaylist->getSongs()->getHead());
             
             // Lê a entrada
-            cout << "Insira o índice da música a ser movida (consulte a lista de músicas): ";
+            cout << endl << "Insira o índice da música a ser movida (consulte a lista de músicas): ";
             cin >> index;
 
             // Tratamento para garantir que a entrada é válida
@@ -346,7 +346,7 @@ int main(int argc, char const *argv[])
             }
 
             // Lê a entrada
-            cout << endl << "Insira o índice da posição para qual deseja movê-la (consulte a lista de músicas): ";
+            cout << "Insira o índice da posição para qual deseja movê-la (consulte a lista de músicas): ";
             cin >> index2;
 
             // Tratamento para garantir que a entrada é válida

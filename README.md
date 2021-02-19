@@ -213,6 +213,17 @@ _Exemplos:_
 ```bash
 Escolha uma das opções acima: 10
 
+Insira o índice da playlist desejada (consulte a lista de playlists): 1
+
+Playlist selecionada: Webchurrasco
+
+1 - Evidências - Chitãozinho & Xororó
+2 - Cheia de Manias - Raça Negra
+
+Insira o índice da música a ser movida (consulte a lista de músicas): 1
+Insira o índice da posição para qual deseja movê-la (consulte a lista de músicas): 2
+
+Posição alterada com sucesso.
 ```
 #### **Listar músicas de uma playlist**
 Imprime a lista com os títulos e artistas de todas as músicas de uma playlist.
@@ -224,8 +235,8 @@ Escolha uma das opções acima: 11
 Insira o índice da playlist desejada (consulte a lista de playlists): 1
 
 Músicas da playlist 'Webchurrasco':
-1 - Evidências - Chitãozinho & Xororó
-2 - Cheia de Manias - Raça Negra
+1 - Cheia de Manias - Raça Negra
+2 - Evidências - Chitãozinho & Xororó
 ```
 ## Limitações
 - O sistema suporta somente músicas de um único artista. Caso a música tenha mais de um, é necessário cadastrar somente o principal.
