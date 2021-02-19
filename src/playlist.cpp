@@ -45,31 +45,30 @@ void Playlist::removeSong(size_t pos) {
   songs->removePosition(pos);
 }
 
-
 /**
  * Move uma música de acordo com as posições passadas por parâmetro
  * @param start índice da posição inicial da música
  * @param end índice da posição final desejada
  */
 void Playlist::moveSong(size_t start, size_t end) {
-  // Acessa o valor da música a ser movida
-  node* target = songs->getNode(start);
-  Song value = target->data;
+  if (start != end) {
+    // Acessa o valor da música a ser movida
+    node* target = songs->getNode(start);
+    Song value = target->data;
 
-  // Remove ela da posição atual
-  songs->removePosition(start);
+    // Remove ela da posição atual
+    songs->removePosition(start);
 
-  // Insere ela na nova posição
-  if (end < start) {
-    songs->insertPosition(end, value);
-  } else if (end > start) {
-    songs->insertPosition(end + 1, value);
-  } else {
-    return;
+    // Insere ela na nova posição
+    if (end < start) {
+      songs->insertPosition(end, value);
+    } else {
+      songs->insertPosition(end + 1, value);
+    } 
+
+    // Cada vez que uma música for movida, playing recebe head
+    playing = songs->getHead();
   }
-
-  // Cada vez que uma nova música for inserida, playing recebe head
-  playing = songs->getHead();
 }
 
 
