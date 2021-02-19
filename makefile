@@ -21,7 +21,7 @@ objects/song.o: src/song.cpp
 objects/linkedList.o: src/linkedList.cpp objects/utils.o objects/song.o
 		g++ src/linkedList.cpp -Iinclude -Wall -pedantic -ansi -std=c++11 -g -c -o objects/linkedList.o
 
-objects/playlist.o: src/playlist.cpp objects/linkedList.o objects/song.o objects/utils.o
+objects/playlist.o: src/playlist.cpp objects/linkedList.o objects/song.o
 		g++ src/playlist.cpp -Iinclude -Wall -pedantic -ansi -std=c++11 -g -c -o objects/playlist.o
 
 objects/listOfPlaylists.o: src/listOfPlaylists.cpp objects//playlist.o

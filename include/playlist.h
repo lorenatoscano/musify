@@ -4,7 +4,6 @@
 #include <iostream>
 #include "linkedList.h"
 #include "song.h"
-#include "utils.h"
 
 /** Classe que representa uma playlist */
 class Playlist {
@@ -24,6 +23,7 @@ class Playlist {
 
     void insertSong(size_t pos, Song value); /**< Insere uma música na playlist */
     void removeSong(size_t pos); /**< Remove uma música da playlist */
+    void moveSong(size_t start, size_t end); /**< Move a música para outra posição na playlist */
     
     node* playNext(); /**< Retorna a próxima música a ser tocada */
 
