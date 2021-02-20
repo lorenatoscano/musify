@@ -33,7 +33,7 @@ int main(int argc, char const *argv[])
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
     // Limpa a tela e exibe as opções do menu
-    system ("CLS");
+    system ("clear");
     displayMenu();
 
     //Le a opção escolhida
