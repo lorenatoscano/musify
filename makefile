@@ -9,7 +9,7 @@ makeobjects:
 musify: objects/main.o objects/utils.o objects/song.o objects/linkedList.o objects/playlist.o objects/listOfPlaylists.o
 		g++ objects/*.o -Iinclude -Wall -pedantic -ansi -std=c++11 -g -o musify
 
-objects/main.o: src/main.cpp objects/utils.o objects/song.o objects/linkedList.o src/listOfPlaylists.cpp
+objects/main.o: src/main.cpp objects/utils.o objects/song.o objects/linkedList.o objects/listOfPlaylists.o
 		g++ src/main.cpp -Iinclude -Wall -pedantic -ansi -std=c++11 -g -c -o objects/main.o
 
 objects/utils.o: src/utils.cpp
