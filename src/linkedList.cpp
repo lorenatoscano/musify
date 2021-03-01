@@ -200,6 +200,8 @@ void LinkedList::removePosition(size_t pos) {
 
     --size;
     delete cur;
+  } else if (pos < 1) {
+    return;
   } else {
     removeLast();
   }
@@ -219,10 +221,12 @@ void LinkedList::removePosition(LinkedList& toRemove) {
     while (temp != nullptr) {
       // Obtém a posição da música na lista atual
       size_t pos = getPosition(temp->data);
-
+  
       // Remove da lista atual
-      removePosition(pos);
-
+      if (pos > 0) {
+        removePosition(pos);
+      }                      
+      
       temp = temp->next;
     }    
   }

@@ -50,7 +50,7 @@ int main(int argc, char const *argv[])
 
   tempSong.setTitle("teste");
   tempSong.setArtist("teste");
-  newList->insertEnd(tempSong);
+  globalList->insertEnd(tempSong);
  
   // Remove as músicas dessa lista da lista global por meio de sobrecarga
   globalList->removePosition(*newList);
