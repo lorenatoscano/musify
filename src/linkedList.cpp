@@ -83,6 +83,26 @@ void LinkedList::insertEnd(Song value) {
 }
 
 /**
+ * Versão sobrecarregada do método de inserção, que insere na lista atual todos os elementos da lista passada por argumento.
+ * @param newList referência de um objeto do tipo lista ligada
+ */
+void LinkedList::insertEnd(LinkedList& newList) {
+  // Tratamento para garantir que a nova lista não está vazia
+  if (newList.getSize() < 1) {
+    return;
+  } else {
+    node* temp = newList.getHead();
+
+    while (temp != nullptr) {
+      // Insere cada elemento no fim da lista atual
+      insertEnd(temp->data);
+      
+      temp = temp->next;
+    }
+  }
+}
+
+/**
  * Cria e insere numa posição escolhida um nó que armazena a música passada por argumento.
  * Faz o tratamento caso a posição escolhida seja a primeira ou maior que a última.
  * @param pos índice da posição escolhida (a partir de 1)

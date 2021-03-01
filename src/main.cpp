@@ -29,11 +29,29 @@ int main(int argc, char const *argv[])
   string tempTitle = ""; 
   string tempArtist = "";
 
+  // Variáveis para testar os métodos sobrecarregados
+  LinkedList* newList = new LinkedList;
+
+  // Insere músicas previamente a uma lista
+  tempSong.setTitle("Cheia de Manias");
+  tempSong.setArtist("Raça Negra");
+  newList->insertEnd(tempSong);
+
+  tempSong.setTitle("Evidências");
+  tempSong.setArtist("Chitãozinho & Xororó");
+  newList->insertEnd(tempSong);
+
+  tempSong.setTitle("Sultans Of Swing");
+  tempSong.setArtist("Dire Straits");
+  newList->insertEnd(tempSong);
+
+  // Insere as músicas dessa lista à lista global por meio de sobrecarga
+  globalList->insertEnd(*newList);
  
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
     // Limpa a tela e exibe as opções do menu
-    system ("clear");
+    system ("CLS");
     displayMenu();
 
     //Le a opção escolhida
@@ -410,6 +428,8 @@ int main(int argc, char const *argv[])
   // Libera a memória das listas globais
   delete globalList;
   delete playlists;
+
+  delete newList;
 
   return 0;
 }

@@ -26,6 +26,7 @@ $ .\musify.exe
 
 ```
 ## Funcionalidades e exemplos
+Para esses exemplos, note que já existem algumas músicas e playlists previamente cadastradas ao sistema. Veja a seção de Funções Sobrecarregadas para mais detalhes.
 ### Gerenciar músicas do sistema
 #### **Adicionar uma música**
 Ação primordial de cadastrar músicas sistema. É necessário fazer isso antes de realizar qualquer outra ação com elas.
@@ -34,21 +35,11 @@ _Exemplos:_
 ```bash
 Escolha uma das opções acima: 1
 
-Título da música: Cheia de Manias
-Artista da música: Raça Negra
+Título da música: Runaway
+Artista da música: Bon Jovi
 
 Música cadastrada com sucesso!
 
-## Escolha a opção 1 novamente para adicionar mais músicas
-
-Título da música: Evidências
-Artista da música: Chitãozinho & Xororó
-
-Título da música: Sultans Of Swing
-Artista da música: Dire Straits
-
-Título da música: Runaway
-Artista da música: Bon Jovi
 ```
 #### **Remover uma música**
 Esta opção remove a música do sistema e de todas as playlists que ela foi adicionada.
