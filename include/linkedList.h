@@ -27,11 +27,13 @@ class LinkedList {
     void insertEnd(Song value); /**< Insere um nó no fim */
     void insertPosition(size_t pos, Song value); /**< Insere um nó numa posição específica */
     
-    void insertEnd(LinkedList& newList); /**< Versão sobrecarregada do método de inserção */
+    void insertEnd(LinkedList& toInsert); /**< Versão sobrecarregada do método de inserção */
 
     void removeFirst(); /**< Remove o primeiro nó */
     void removeLast(); /**< Remove o último nó */
     void removePosition(size_t pos); /**< Remove o nó de uma posição específica */
+
+    void removePosition(LinkedList& toRemove); /**< Versão sobrecarregada do método de remoção */
 
     node* search(Song searchSong); /**< Busca um nó com base nos atributos da música */
     node* getNode(size_t pos); /**< Retorna um nó com base na posição */

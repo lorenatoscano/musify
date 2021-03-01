@@ -47,7 +47,14 @@ int main(int argc, char const *argv[])
 
   // Insere as músicas dessa lista à lista global por meio de sobrecarga
   globalList->insertEnd(*newList);
+
+  tempSong.setTitle("teste");
+  tempSong.setArtist("teste");
+  newList->insertEnd(tempSong);
  
+  // Remove as músicas dessa lista da lista global por meio de sobrecarga
+  globalList->removePosition(*newList);
+
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
     // Limpa a tela e exibe as opções do menu

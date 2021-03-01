@@ -84,14 +84,14 @@ void LinkedList::insertEnd(Song value) {
 
 /**
  * Versão sobrecarregada do método de inserção, que insere na lista atual todos os elementos da lista passada por argumento.
- * @param newList referência de um objeto do tipo lista ligada
+ * @param toInsert referência de um objeto do tipo lista ligada
  */
-void LinkedList::insertEnd(LinkedList& newList) {
+void LinkedList::insertEnd(LinkedList& toInsert) {
   // Tratamento para garantir que a nova lista não está vazia
-  if (newList.getSize() < 1) {
+  if (toInsert.getSize() < 1) {
     return;
   } else {
-    node* temp = newList.getHead();
+    node* temp = toInsert.getHead();
 
     while (temp != nullptr) {
       // Insere cada elemento no fim da lista atual
@@ -202,6 +202,29 @@ void LinkedList::removePosition(size_t pos) {
     delete cur;
   } else {
     removeLast();
+  }
+}
+
+/**
+ * Versão sobrecarregada do método de remoção, que remove da lista atual todos os elementos da lista passada por parâmetro.
+ * @param toRemove de um objeto do tipo lista ligada
+ */
+void LinkedList::removePosition(LinkedList& toRemove) {
+  // Tratamento para garantir que a nova lista não está vazia
+  if (toRemove.getSize() < 1) {
+    return;
+  } else {
+    node* temp = toRemove.getHead();
+
+    while (temp != nullptr) {
+      // Obtém a posição da música na lista atual
+      size_t pos = getPosition(temp->data);
+
+      // Remove da lista atual
+      removePosition(pos);
+
+      temp = temp->next;
+    }    
   }
 }
 
