@@ -28,6 +28,20 @@ LinkedList::~LinkedList() {
   }
 }
 
+LinkedList::LinkedList(const LinkedList& oldList) {
+  head = nullptr;
+  tail = nullptr;
+  size = 0;
+
+  node* temp = oldList.head;
+
+  while (temp != nullptr) {
+    insertEnd(temp->data);
+
+    temp = temp->next;
+  }
+}
+
 node* LinkedList::getHead() {
   return head;
 }

@@ -20,6 +20,8 @@ class LinkedList {
     LinkedList(); /**< Construtor da lista ligada */
     ~LinkedList(); /**< Destrutor da lista ligada */
 
+    LinkedList(const LinkedList& oldList); /**< Construtor cópia da lista ligada */
+
     node* getHead(); /**< Obtém o ponteiro do head */
     size_t getSize(); /**< Obtém o tamanho da lista */
 

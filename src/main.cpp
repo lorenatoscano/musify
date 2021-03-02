@@ -30,30 +30,39 @@ int main(int argc, char const *argv[])
   string tempArtist = "";
 
   // Variáveis para testar os métodos sobrecarregados
-  LinkedList* newList = new LinkedList;
+  LinkedList* list1 = new LinkedList;
 
   // Insere músicas previamente a uma lista
+  tempSong.setTitle("Never Gonna Give You Up");
+  tempSong.setArtist("Rick Astley");
+  list1->insertEnd(tempSong);
+
+  tempSong.setTitle("The Chain");
+  tempSong.setArtist("Fleetwood Mac");
+  list1->insertEnd(tempSong);
+
+  // Cria uma segunda lista utilizando construtor cópia
+  LinkedList* list2 = new LinkedList(*list1);
+
+  // Adiciona mais músicas a segunda lista
   tempSong.setTitle("Cheia de Manias");
   tempSong.setArtist("Raça Negra");
-  newList->insertEnd(tempSong);
+  list2->insertEnd(tempSong);
 
   tempSong.setTitle("Evidências");
   tempSong.setArtist("Chitãozinho & Xororó");
-  newList->insertEnd(tempSong);
+  list2->insertEnd(tempSong);
 
   tempSong.setTitle("Sultans Of Swing");
   tempSong.setArtist("Dire Straits");
-  newList->insertEnd(tempSong);
+  list2->insertEnd(tempSong);
+
+  // Remove da list2 as músicas da list1 por meio de sobrecarga
+  list2->removePosition(*list1);
 
   // Insere as músicas dessa lista à lista global por meio de sobrecarga
-  globalList->insertEnd(*newList);
-
-  tempSong.setTitle("teste");
-  tempSong.setArtist("teste");
-  globalList->insertEnd(tempSong);
+  globalList->insertEnd(*list2);
  
-  // Remove as músicas dessa lista da lista global por meio de sobrecarga
-  globalList->removePosition(*newList);
 
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
@@ -436,7 +445,8 @@ int main(int argc, char const *argv[])
   delete globalList;
   delete playlists;
 
-  delete newList;
+  delete list1;
+  delete list2;
 
   return 0;
 }
