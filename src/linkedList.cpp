@@ -28,6 +28,9 @@ LinkedList::~LinkedList() {
   }
 }
 
+/** Copia todos os elementos da lista passada por referência para a lista atual 
+ * @param oldList referência de objeto do tipo linkedList.
+*/
 LinkedList::LinkedList(const LinkedList& oldList) {
   head = nullptr;
   tail = nullptr;
@@ -40,6 +43,45 @@ LinkedList::LinkedList(const LinkedList& oldList) {
 
     temp = temp->next;
   }
+}
+
+/** Concatena a lista atual com a lista passada por referência e retorna uma lista final
+ * @param secondList referência de objeto do tipo linkedList.
+ * @return a lista final concatenada.
+*/
+LinkedList LinkedList::operator+ (const LinkedList& secondList) {
+  LinkedList finalList;
+
+  // Percorre a lista atual copiando os valores para a lista final
+  node* temp = head;
+  while (temp != nullptr) {
+    finalList.insertEnd(temp->data);
+
+    temp = temp->next;
+  }
+  
+  // Percorre a segunda lista copiando os valores para a lista final
+  temp = secondList.head;
+  while (temp != nullptr) {
+    node* newNode = new node;
+
+    newNode->data = temp->data;
+    newNode->next = nullptr;
+    
+    if (finalList.head == nullptr) {
+      finalList.head = newNode;
+      finalList.tail = newNode;
+      newNode = nullptr;
+    } else {
+      finalList.tail->next = newNode;
+      finalList.tail = newNode;
+    }
+
+    finalList.size++;
+    temp = temp->next;
+  }
+  
+  return finalList;
 }
 
 node* LinkedList::getHead() {

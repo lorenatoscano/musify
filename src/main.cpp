@@ -63,11 +63,15 @@ int main(int argc, char const *argv[])
   // Insere as músicas dessa lista à lista global por meio de sobrecarga
   globalList->insertEnd(*list2);
  
+  // Cria uma terceira lista a partir da concatenação das duas primeiras listas
+  LinkedList* list3 = new LinkedList(*list1 + *list2);
+  cout << "Músicas da lista 3:" << endl << endl;
+  list3->display();
 
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
     // Limpa a tela e exibe as opções do menu
-    system ("CLS");
+    // system ("clear");
     displayMenu();
 
     //Le a opção escolhida
@@ -447,6 +451,7 @@ int main(int argc, char const *argv[])
 
   delete list1;
   delete list2;
+  delete list3;
 
   return 0;
 }

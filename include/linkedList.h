@@ -22,6 +22,8 @@ class LinkedList {
 
     LinkedList(const LinkedList& oldList); /**< Construtor cópia da lista ligada */
 
+    LinkedList operator+ (const LinkedList& secondList); /**< Concatenação de listas */
+
     node* getHead(); /**< Obtém o ponteiro do head */
     size_t getSize(); /**< Obtém o tamanho da lista */
 
