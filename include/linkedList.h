@@ -24,6 +24,9 @@ class LinkedList {
 
     LinkedList operator+ (const LinkedList& secondList); /**< Concatenação de listas */
 
+    void operator>> (node*& lastNode); /**< Extrai o último elemento da lista */
+    void operator<< (node*& newNode); /**< Insere um nó no fim da lista */
+
     node* getHead(); /**< Obtém o ponteiro do head */
     size_t getSize(); /**< Obtém o tamanho da lista */
 

@@ -84,6 +84,28 @@ LinkedList LinkedList::operator+ (const LinkedList& secondList) {
   return finalList;
 }
 
+/** Extrai o último elemento da lista atribuindo seus valores ao nó recebido como argumento
+ * @param lastNode recebe os valores do nó extraído.
+*/
+void LinkedList::operator>> (node*& lastNode){ 
+  if (size > 0) {
+    lastNode->data = tail->data;
+    lastNode->next = tail->next;
+
+    removeLast();
+  } else {
+    lastNode = nullptr;
+  }
+}
+
+void LinkedList::operator<< (node*& newNode) {
+  if (newNode == nullptr) {
+    return;
+  } else {
+    insertEnd(newNode->data);
+  }
+}
+
 node* LinkedList::getHead() {
   return head;
 }

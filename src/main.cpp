@@ -29,7 +29,12 @@ int main(int argc, char const *argv[])
   string tempTitle = ""; 
   string tempArtist = "";
 
-  // Variáveis para testar os métodos sobrecarregados
+  // system ("clear");
+  cout << "----------------------------------------" << endl;
+  cout << "--------- TESTES DOS MÉTODOS -----------" << endl;
+  cout << "----------- SOBRECARREGADOS ------------" << endl;
+  cout << "----------------------------------------" << endl << endl;
+  // Lista para testar os métodos sobrecarregados
   LinkedList* list1 = new LinkedList;
 
   // Insere músicas previamente a uma lista
@@ -41,7 +46,11 @@ int main(int argc, char const *argv[])
   tempSong.setArtist("Fleetwood Mac");
   list1->insertEnd(tempSong);
 
-  // Cria uma segunda lista utilizando construtor cópia
+  cout << "Lista 1:" << endl;
+  list1->display();
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 1.C Cria uma segunda lista utilizando construtor cópia
   LinkedList* list2 = new LinkedList(*list1);
 
   // Adiciona mais músicas a segunda lista
@@ -57,16 +66,45 @@ int main(int argc, char const *argv[])
   tempSong.setArtist("Dire Straits");
   list2->insertEnd(tempSong);
 
-  // Remove da list2 as músicas da list1 por meio de sobrecarga
+  cout << "Lista 2 criada a partir de lista 1 com mais músicas:" << endl;
+  list2->display();
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 1.B Remove da list2 as músicas da list1 por meio de sobrecarga
   list2->removePosition(*list1);
 
-  // Insere as músicas dessa lista à lista global por meio de sobrecarga
+  cout << "Lista 2 sem os elementos de lista 1:" << endl;
+  list2->display();
+
+  // 1.A Insere as músicas dessa lista à lista global por meio de sobrecarga
   globalList->insertEnd(*list2);
  
-  // Cria uma terceira lista a partir da concatenação das duas primeiras listas
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 2.A Cria uma terceira lista a partir da concatenação das duas primeiras listas
   LinkedList* list3 = new LinkedList(*list1 + *list2);
-  cout << "Músicas da lista 3:" << endl << endl;
+
+  cout << "Lista 3 criada a partir de lista 1 + lista 2:" << endl;
   list3->display();
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 2.B Extrai o ultimo nó da lista 3
+  node* temp = new node;
+  *list3 >> temp;
+
+  cout << "Lista 3 após extração:" << endl;
+  list3->display();
+  cout << endl << "Música que foi extraída:" << endl;
+  cout << temp->data.getTitle() << " - " << temp->data.getArtist() << endl;
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 2.C Adiciona novamente o nó ao fim da lista 3
+  *list3 << temp;
+  cout << "Lista 3 após inserção:" << endl;
+  list3->display();
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  cout << "Pressione 'enter' para acessar o gerenciador." << endl;
+  getchar();
 
   // Executa o menu de funcionalidades enquanto a opção for diferente de 0
   while (option != 0) {
@@ -452,6 +490,8 @@ int main(int argc, char const *argv[])
   delete list1;
   delete list2;
   delete list3;
+
+  delete temp;
 
   return 0;
 }
