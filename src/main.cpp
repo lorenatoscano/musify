@@ -135,11 +135,17 @@ int main(int argc, char const *argv[])
 
   cout << endl << "----------------------------------------" << endl << endl;
   // 3.B Remove de p2 as músicas de p1 por meio de sobrecarga
-  p2->removeSong(*p1);
-  cout << p2->getName() << " sem as músicas de p1:" << endl;
+  size_t count = p2->removeSong(*p1);
+  cout << p2->getName() << " sem as " << count << " músicas de p1:" << endl;
   p2->displayAllSongs(p2->getSongs()->getHead());
 
-  
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 3.C Cria uma playlist p4 utilizando construtor cópia
+  Playlist* p4 = new Playlist(*p1);
+  p4->setName("Playlist 4");
+  cout << p4->getName() << " cópia de p1:" << endl;
+  p4->displayAllSongs(p4->getSongs()->getHead());
+
   cout << endl << "----------------------------------------" << endl << endl;
   cout << "Pressione 'enter' para acessar o gerenciador." << endl;
   getchar();

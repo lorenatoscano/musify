@@ -14,6 +14,24 @@ Playlist::~Playlist() {
   delete songs;
 }
 
+/** Copia todas as músicas da playlist passada por referência para a playlist atual
+ * @param old referência de objeto do tipo playlist
+ */
+Playlist::Playlist(const Playlist& old) {
+  songs = new LinkedList;
+  playing = nullptr;
+  count = 1;
+  name = old.name;
+
+  node* temp = old.songs->getHead();
+
+  while (temp != nullptr) {
+    songs->insertEnd(temp->data);
+
+    temp = temp->next;
+  }
+}
+
 LinkedList* Playlist::getSongs() {
   return songs;
 }

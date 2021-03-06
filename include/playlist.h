@@ -16,6 +16,8 @@ class Playlist {
     Playlist(); /**< Construtor da playlist */
     ~Playlist(); /**< Destrutor da playlist */
 
+    Playlist(const Playlist& old); /**< Construtor cópia da playlist */
+
     LinkedList* getSongs(); /**< Obtém o ponteiro da lista de músicas */
 
     std::string getName(); /**< Obtém o nome da playlist */
