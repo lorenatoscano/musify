@@ -103,6 +103,44 @@ int main(int argc, char const *argv[])
   list3->display();
 
   cout << endl << "----------------------------------------" << endl << endl;
+  Playlist* p1 =  new Playlist;
+  p1->setName("Playlist 1");
+  // Insere músicas previamente a uma playlist
+  tempSong.setTitle("Never Gonna Give You Up");
+  tempSong.setArtist("Rick Astley");
+  p1->insertSong(1, tempSong);
+
+  tempSong.setTitle("The Chain");
+  tempSong.setArtist("Fleetwood Mac");
+  p1->insertSong(2, tempSong);
+
+  cout << p1->getName() << ":" << endl;
+  p1->displayAllSongs(p1->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  Playlist* p2 =  new Playlist;
+  p2->setName("Playlist 2");
+  // Insere música a uma segunda playlist
+  tempSong.setTitle("Cheia de Manias");
+  tempSong.setArtist("Raça Negra");
+  p2->insertSong(1, tempSong);
+
+  cout << p2->getName() << ":" << endl;
+  p2->displayAllSongs(p2->getSongs()->getHead());
+
+  // 3.A Insere as músicas de p1 a p2 por meio de sobrecarga
+  p2->insertSong(*p1);
+  cout << p2->getName() << " com as músicas de p1:" << endl;
+  p2->displayAllSongs(p2->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 3.B Remove de p2 as músicas de p1 por meio de sobrecarga
+  p2->removeSong(*p1);
+  cout << p2->getName() << " sem as músicas de p1:" << endl;
+  p2->displayAllSongs(p2->getSongs()->getHead());
+
+  
+  cout << endl << "----------------------------------------" << endl << endl;
   cout << "Pressione 'enter' para acessar o gerenciador." << endl;
   getchar();
 

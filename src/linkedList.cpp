@@ -98,6 +98,9 @@ void LinkedList::operator>> (node*& lastNode){
   }
 }
 
+/** Insere um nó passado por argumento no fim da lista
+ * @param newNode nó a ser inserido.
+*/
 void LinkedList::operator<< (node*& newNode) {
   if (newNode == nullptr) {
     return;

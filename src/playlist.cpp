@@ -71,6 +71,51 @@ void Playlist::moveSong(size_t start, size_t end) {
   }
 }
 
+/**
+ * Versão sobrecarregada do método de inserção, que insere na playlist atual todas as músicas da playlist passada por argumento.
+ * @param toInsert referência de um objeto do tipo playlist
+ */
+void Playlist::insertSong(Playlist& toInsert) {
+  // Tratamento para garantir que a nova lista não está vazia
+  if (toInsert.getSongs()->getSize() < 1) {
+    return;
+  } else {
+    // Insere as músicas na playlist atual por meio de sobrecarga
+    songs->insertEnd(*toInsert.getSongs());
+  }
+}
+
+/**
+ * Versão sobrecarregada do método de remoção, que remove da playlist atual todas as músicas da playlist passada por parâmetro.
+ * @param toRemove referência de um objeto do tipo playlist
+ * @return quantidade de elementos removidos
+ */
+size_t Playlist::removeSong(Playlist& toRemove) {
+  // Tratamento para garantir que a nova playlist não está vazia
+  if (toRemove.getSongs()->getSize() < 1) {
+    return 0;
+  } else {
+    size_t removed = 0;
+
+    node* temp = toRemove.getSongs()->getHead();
+
+    while (temp != nullptr) {
+      // Obtém a posição da música na playlist atual
+      size_t pos = getSongs()->getPosition(temp->data);
+
+      // Remove da playlist atual
+      if (pos > 0) {
+        removeSong(pos);
+        ++removed;
+      }
+
+      temp = temp->next;
+    }
+    
+    return removed;
+  }
+}
+
 
 /**
  * Retorna a música a ser tocada e incrementa a que está "tocando" para a próxima

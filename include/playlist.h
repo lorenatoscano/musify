@@ -24,7 +24,10 @@ class Playlist {
     void insertSong(size_t pos, Song value); /**< Insere uma música na playlist */
     void removeSong(size_t pos); /**< Remove uma música da playlist */
     void moveSong(size_t start, size_t end); /**< Move a música para outra posição na playlist */
-    
+
+    void insertSong(Playlist& toInsert); /**< Versão sobrecarregada do método de inserção */
+    size_t removeSong(Playlist& toRemove); /**< Versão sobrecarregada do método de remoção */
+
     node* playNext(); /**< Retorna a próxima música a ser tocada */
 
     void displayAllSongs(node* current); /**< Imprime todas as músicas que compoem uma playlist */
