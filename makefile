@@ -3,7 +3,7 @@ all: makeobjects musify
 
 # Cria a pasta "objects"
 makeobjects:
-		mkdirs -p objects
+		mkdir -p objects
 
 # Compila tudo e cria o executável "musify"
 musify: objects/main.o objects/utils.o objects/song.o objects/linkedList.o objects/playlist.o objects/listOfPlaylists.o
