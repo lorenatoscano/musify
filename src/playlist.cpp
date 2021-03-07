@@ -32,6 +32,95 @@ Playlist::Playlist(const Playlist& old) {
   }
 }
 
+/** Faz a união da playlist atual com a playlist passada por referência e retorna uma playlist final
+ * @param secondList referência de objeto do tipo Playlist.
+ * @return a playlist final contendo as músicas das duas.
+*/
+Playlist Playlist::operator+ (Playlist& secondPlaylist) {
+  Playlist result;
+  
+  // Insere as músicas da playlist atual na playlist final
+  result.insertSong(*this); 
+
+  // Insere as músicas da segunda playlist na playlist final
+  result.insertSong(secondPlaylist);
+
+  return result;
+}
+
+/** Copia as músicas da playlist atual, insere a música passada por parâmetro e retorna uma playlist final
+ * @param toAdd referência de objeto do tipo Song.
+ * @return a playlist final.
+*/
+Playlist Playlist::operator+ (Song& toAdd) {
+  Playlist result;
+
+  // Insere as músicas da playlist atual na playlist final
+  result.insertSong(*this); 
+
+  // Insere a música do parâmetro no final
+  result.songs->insertEnd(toAdd);
+
+  return result;
+}
+
+/** Cria uma playlist final contendo todas as músicas da playlist atual que não estão na playlist passada por referência
+ * @param secondPlaylist referência de objeto do tipo Playlist.
+ * @return a playlist final.
+*/
+Playlist Playlist::operator- (Playlist& secondPlaylist) {
+  // Cria a playlist final a partir da playlist atual
+  Playlist result(*this);
+
+  node* temp = secondPlaylist.getSongs()->getHead();
+  // Percorre a segunda playlist
+  while (temp != nullptr) {
+    // Procura a posição da música na playlist final
+    size_t pos = result.getSongs()->getPosition(temp->data);
+
+    
+    if (pos > 0) {
+      result.removeSong(pos);
+    }
+
+    temp = temp->next;
+  }
+  
+  return result;
+}
+
+/** Copia as músicas da playlist atual, remove a música passada por parâmetro e retorna uma playlist final
+ * @param toRemove referência de objeto do tipo Song.
+ * @return a playlist final.
+*/
+Playlist Playlist::operator- (Song& toRemove) {
+  // Cria a playlist final a partir da playlist atual
+  Playlist result(*this);
+
+  // Obtém a posição da música na playlist final
+  size_t pos = result.getSongs()->getPosition(toRemove);
+
+  // Se existir, remove
+  if (pos > 0) {
+    result.removeSong(pos);
+  }
+
+  return result;
+}
+
+void Playlist::operator>> (Song*& lastSong) {
+  if (songs->getSize() > 0) {
+    // Copia os atributos da música
+    lastSong->setTitle(songs->getTail()->data.getTitle());
+    lastSong->setArtist(songs->getTail()->data.getArtist());
+
+    // Remove a música da playlist atual
+    songs->removeLast();
+  } else {
+    lastSong = nullptr;
+  }
+}
+
 LinkedList* Playlist::getSongs() {
   return songs;
 }

@@ -18,6 +18,13 @@ class Playlist {
 
     Playlist(const Playlist& old); /**< Construtor cópia da playlist */
 
+    Playlist operator+ (Playlist& secondPlaylist); /**< União de playlists */
+    Playlist operator+ (Song& toAdd); /**< Copia a playlist e adiciona uma música */
+    Playlist operator- (Playlist& secondPlaylist); /**< Diferença entre duas playlists */
+    Playlist operator- (Song& toRemove); /**< Copia a playlist e remove uma música */
+    void operator>> (Song*& lastSong); /**< Extrai a última música da playlist */
+    void operator<< (Song*& newSong); /**< Insere uma música ao final da playlist */
+
     LinkedList* getSongs(); /**< Obtém o ponteiro da lista de músicas */
 
     std::string getName(); /**< Obtém o nome da playlist */

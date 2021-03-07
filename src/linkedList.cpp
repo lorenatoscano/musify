@@ -113,6 +113,10 @@ node* LinkedList::getHead() {
   return head;
 }
 
+node* LinkedList::getTail() {
+  return tail;
+}
+
 size_t LinkedList::getSize() {
   return size;
 }

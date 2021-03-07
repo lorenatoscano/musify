@@ -140,11 +140,59 @@ int main(int argc, char const *argv[])
   p2->displayAllSongs(p2->getSongs()->getHead());
 
   cout << endl << "----------------------------------------" << endl << endl;
-  // 3.C Cria uma playlist p4 utilizando construtor cópia
-  Playlist* p4 = new Playlist(*p1);
+  // 3.C Cria uma playlist p3 utilizando construtor cópia
+  Playlist* p3 = new Playlist(*p1);
+  p3->setName("Playlist 3");
+  cout << p3->getName() << " cópia de p1:" << endl;
+  p3->displayAllSongs(p3->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // Adiciona mais uma música a p1
+  tempSong.setTitle("Dancing With Myself");
+  tempSong.setArtist("Billy Idol");
+  p1->insertSong(3, tempSong);
+  cout << p1->getName() << " com mais uma música:" << endl;
+  p1->displayAllSongs(p1->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 4.A Cria uma playlist p4 a partir da união de p1 e p3
+  Playlist* p4 = new Playlist(*p1 + *p3);
   p4->setName("Playlist 4");
-  cout << p4->getName() << " cópia de p1:" << endl;
+  cout << p4->getName() << " criada a partir de p1 união p3:" << endl;
   p4->displayAllSongs(p4->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  tempSong.setTitle("Panic");
+  tempSong.setArtist("The Smiths");
+  // 4.B Cria uma playlist p5 a partir de p4 + tempSong
+  Playlist* p5 = new Playlist(*p4 + tempSong);
+  p5->setName("Playlist 5");
+  cout << p5->getName() << " criada de p4 + uma nova música:" << endl;
+  p5->displayAllSongs(p5->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 4.C Cria a p6 a partir de p5 - p3
+  Playlist* p6 = new Playlist(*p5 - *p3);
+  p6->setName("Playlist 6");
+  cout << p6->getName() << " criada de p5 - p3:" << endl;
+  p6->displayAllSongs(p6->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 4.D Cria p7 a partir de p6 - tempSong
+  Playlist* p7 = new Playlist(*p6 - tempSong);
+  p6->setName("Playlist 7");
+  cout << p7->getName() << " criada de p6 - uma música:" << endl;
+  p7->displayAllSongs(p7->getSongs()->getHead());
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 4.E Extrai a última música de p5
+  Song* songPtr;
+  *p5 >> songPtr;
+
+  cout << p5->getName() << " após extração:" << endl;
+  p5->displayAllSongs(p5->getSongs()->getHead());
+  cout << endl << "Música que foi extraída:" << endl;
+  cout << songPtr->getTitle() << " - " << songPtr->getArtist() << endl;
 
   cout << endl << "----------------------------------------" << endl << endl;
   cout << "Pressione 'enter' para acessar o gerenciador." << endl;
@@ -535,6 +583,14 @@ int main(int argc, char const *argv[])
   delete list2;
   delete list3;
 
+  delete p1;
+  delete p2;
+  delete p3;
+  delete p4;
+  delete p5;
+  delete p6;
+  delete p7;
+  
   delete temp;
 
   return 0;

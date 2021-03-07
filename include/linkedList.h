@@ -28,6 +28,7 @@ class LinkedList {
     void operator<< (node*& newNode); /**< Insere um nó no fim da lista */
 
     node* getHead(); /**< Obtém o ponteiro do head */
+    node* getTail(); /**< Obtém o ponteiro do tail */
     size_t getSize(); /**< Obtém o tamanho da lista */
 
     void insertStart(Song value); /**< Insere um nó no início */
