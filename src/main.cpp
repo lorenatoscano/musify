@@ -186,13 +186,19 @@ int main(int argc, char const *argv[])
 
   cout << endl << "----------------------------------------" << endl << endl;
   // 4.E Extrai a última música de p5
-  Song* songPtr;
+  Song* songPtr = new Song;
   *p5 >> songPtr;
 
   cout << p5->getName() << " após extração:" << endl;
   p5->displayAllSongs(p5->getSongs()->getHead());
   cout << endl << "Música que foi extraída:" << endl;
   cout << songPtr->getTitle() << " - " << songPtr->getArtist() << endl;
+
+  cout << endl << "----------------------------------------" << endl << endl;
+  // 4.F Adiciona novamente a música ao fim de p5
+  *p5 << songPtr;
+  cout << p5->getName() << " após inserção:" << endl;
+  p5->displayAllSongs(p5->getSongs()->getHead());
 
   cout << endl << "----------------------------------------" << endl << endl;
   cout << "Pressione 'enter' para acessar o gerenciador." << endl;
@@ -590,8 +596,9 @@ int main(int argc, char const *argv[])
   delete p5;
   delete p6;
   delete p7;
-  
+
   delete temp;
+  delete songPtr;
 
   return 0;
 }

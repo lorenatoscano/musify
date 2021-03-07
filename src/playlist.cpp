@@ -108,16 +108,29 @@ Playlist Playlist::operator- (Song& toRemove) {
   return result;
 }
 
+/** Extrai a última música da playlist atribuindo seus valores a música recebida como argumento
+ * @param lastSong recebe os valores da música extraída.
+*/
 void Playlist::operator>> (Song*& lastSong) {
   if (songs->getSize() > 0) {
-    // Copia os atributos da música
-    lastSong->setTitle(songs->getTail()->data.getTitle());
-    lastSong->setArtist(songs->getTail()->data.getArtist());
-
-    // Remove a música da playlist atual
-    songs->removeLast();
+    node* temp;
+    // Extrai o ultimo nó da lista de músicas
+    *songs >> temp;
+    // Guarda a música desse nó
+    *lastSong = temp->data;
   } else {
     lastSong = nullptr;
+  }
+}
+
+/** Insere uma música passada por argumento no fim da playlist
+ * @param newSong música a ser inserida.
+*/
+void Playlist::operator<< (Song*& newSong) {
+  if (newSong == nullptr) {
+    return;
+  } else {
+    songs->insertEnd(*newSong);
   }
 }
 
