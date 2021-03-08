@@ -26,7 +26,7 @@ $ .\musify.exe
 
 ```
 ## Funcionalidades e exemplos
-Para esses exemplos, note que já existem algumas músicas e playlists previamente cadastradas ao sistema. Veja a seção de Funções Sobrecarregadas para mais detalhes.
+Para esses exemplos, note que já existem algumas músicas e playlists previamente cadastradas ao sistema. Veja a seção de [Funções e operadores sobrecarregados](#funções-e-operadores-sobrecarregados) para mais detalhes.
 ### Gerenciar músicas do sistema
 #### **Adicionar uma música**
 Ação primordial de cadastrar músicas sistema. É necessário fazer isso antes de realizar qualquer outra ação com elas.
@@ -229,6 +229,112 @@ Músicas da playlist 'Webchurrasco':
 1 - Cheia de Manias - Raça Negra
 2 - Evidências - Chitãozinho & Xororó
 ```
+
+### Funções e operadores sobrecarregados
+Os casos de teste estão implementados no início do main. Ao rodar o programa, antes de acessar o menu do gerenciador, será impresso o conteúdo das listas e playlists "teste" e suas mudanças ao longo de cada etapa.
+
+#### **Construtor cópia**
+Recebe uma referência de uma lista e copia todos os seus elementos para a lista atual.
+
+`Uso da função: linha 54 do main.cpp`
+
+Cria a lista 2 a partir da cópia da lista 1.
+#### **Sobrecarga de remover elementos**
+Recebe uma lista ligada como parâmetro e remove todos os seus elementos da lista atual.
+
+`Uso da função: linha 74 do main.cpp`
+
+Remove da lista 2 as músicas que estão na lista 1.
+#### **Sobrecarga de adicionar elementos**
+Recebe uma lista ligada como parâmetro e adiciona todos os seus elementos na lista atual.
+
+`Uso da função: linha 80 do main.cpp`
+
+Aqui utilizo a sobrecarga para inserir previamente as músicas de teste da lista 2 na lista global. Isso pode ser verificado escolhendo a opção 3 do menu, que lista todas as músicas da lista global do sistema.
+
+#### **Sobrecarga de operador + para concatenação**
+Concatena a lista atual com a lista passada por referência e retorna uma lista final.
+
+`Uso da função: linha 84 do main.cpp`
+
+Cria a lista 3 a partir da concatenação lista 1 + lista 2.
+#### **Sobrecarga de operador de extração >>**
+Extrai o último elemento da lista atribuindo seus valores ao nó recebido como argumento.
+
+`Uso da função: linha 92 do main.cpp`
+
+Extrai o último nó da lista 3.
+
+#### **Sobrecarga de operador de inserção <<**
+Insere o nó passado por argumento ao final da lista atual.
+
+`Uso da função: linha 101 do main.cpp`
+
+Adiciona novamente o nó ao fim da lista 3.
+
+#### **Sobrecarga de adicionar músicas**
+Recebe uma referência de uma playlist e copia todas as suas músicas para a playlist atual.
+
+`Uso da função: linha 132 do main.cpp`
+
+Utilizo para inserir as músicas da playlist 1 na playlist 2.
+
+#### **Sobrecarga de remover músicas**
+Recebe uma referência de uma playlist e remove todas as suas músicas da playlist atual. Retorna a quantidade de músicas removidas.
+
+`Uso da função: linha 138 do main.cpp`
+
+Remove da playlist 2 as músicas que estão na playlist 1.
+
+#### **Construtor cópia de playlist**
+Recebe uma referência de uma playlist e copia todas as suas músicas para a playlist atual.
+
+`Uso da função: linha 144 do main.cpp`
+
+Cria uma playlist 3 a partir da cópia da playlist 1.
+
+#### **Sobrecarga de operador + para união**
+Retorna uma nova playlist a partir da união da playlist atual com a passada por referência.
+
+`Uso da função: linha 159 do main.cpp`
+
+Cria a playlist 4 a partir da união entre as playlists 1 e 3.
+
+#### **Sobrecarga de operador + para adicionar música**
+Retorna uma nova playlist a partir da cópia da playlist atual, incluindo a nova música passada por argumento.
+
+`Uso da função: linha 168 do main.cpp`
+
+Cria a playlist 5 a partir da cópia da playlist 4 e a música "Panic - The Smiths".
+
+#### **Sobrecarga de operador - para diferença**
+Faz a diferença entre duas playlists, ou seja, retorna uma playlist final contendo todas as músicas da playlist atual que não estão na playlist passada por referência.
+
+`Uso da função: linha 175 do main.cpp`
+
+Cria a playlist 6 a partir da diferença entre as playlists 5 e 3.
+
+#### **Sobrecarga de operador - para remover música**
+Retorna uma nova playlist a partir da cópia da playlist atual, removendo a música passada por argumento.
+
+`Uso da função: linha 182 do main.cpp`
+
+Cria a playlist 7 a partir da cópia da playlist 6 menos a música "Panic - The Smiths".
+
+#### **Sobrecarga de operador de extração >>**
+Extrai a última música da playlist atribuindo seus valores a música recebida como argumento.
+
+`Uso da função: linha 190 do main.cpp`
+
+Extrai a última música da playlist 5.
+
+#### **Sobrecarga de operador de inserção <<**
+Insere a música recebida ao final da playlist atual.
+
+`Uso da função: linha 199 do main.cpp`
+
+Insere novamente a música "Panic - The Smiths" na playlist 5.
+
 ## Limitações
 - O sistema suporta somente músicas de um único artista. Caso a música tenha mais de um, é necessário cadastrar somente o principal.
 ## Licença e Autora
