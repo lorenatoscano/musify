@@ -113,11 +113,13 @@ Playlist Playlist::operator- (Song& toRemove) {
 */
 void Playlist::operator>> (Song*& lastSong) {
   if (songs->getSize() > 0) {
-    node* temp;
+    node* temp = new node;
     // Extrai o ultimo nó da lista de músicas
     *songs >> temp;
     // Guarda a música desse nó
     *lastSong = temp->data;
+
+    delete temp;
   } else {
     lastSong = nullptr;
   }
