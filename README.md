@@ -10,19 +10,18 @@ Musify é uma implementação em C++ de um gerenciador de playlists desenvolvido
 
 ## Como rodar?
 
-
 ```bash
 # Clone o projeto
 $ git clone https://github.com/lorenatoscano/musify.git
 
+# Entre na pasta
+$ cd musify
+
 # Compile o programa
 $ make
 
-# Execute no linux
+# Execute
 $ ./musify 
-
-# Ou execute no windows
-$ .\musify.exe
 
 ```
 ## Funcionalidades e exemplos
